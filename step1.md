@@ -1,3 +1,12 @@
+<!-- TOP -->
+<div class="top">
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <div class="scenario-title-section">
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
+  </div>
+</div>
+
 # ⚒️ Create your Astra instance
 ### Exercise time: _~10 minutes_
 

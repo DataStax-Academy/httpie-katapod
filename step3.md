@@ -1,3 +1,12 @@
+<!-- TOP -->
+<div class="top">
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <div class="scenario-title-section">
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
+  </div>
+</div>
+
 # Exploring Stargate APIs from the command line - REST
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the REST API
@@ -94,7 +103,7 @@ Now you can move on and check out the GraphQL API.
 
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"step2"}]'
-   class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Credentials
  </a>
  <a href='command:katapod.loadPage?[{"step":"step4"}]'
     class="btn btn-dark navigation-bottom-right">Next ➡️ GraphQL API

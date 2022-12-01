@@ -1,3 +1,12 @@
+<!-- TOP -->
+<div class="top">
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <div class="scenario-title-section">
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
+  </div>
+</div>
+
 # Exploring Stargate APIs from the command line - GraphQL
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the GraphQL API
@@ -116,3 +125,12 @@ Double checking - what tables are in my keyspace?
 `http :/rest/v2/schemas/keyspaces/workshop/tables`{{execute}}
 
 Now you can move on and check out the Document API.
+
+<div id="navigation-bottom" class="navigation-bottom">
+ <a href='command:katapod.loadPage?[{"step":"step3"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
+ </a>
+ <a href='command:katapod.loadPage?[{"step":"step5"}]'
+    class="btn btn-dark navigation-bottom-right">Next ➡️ Document API
+  </a>
+</div>

@@ -1,3 +1,12 @@
+<!-- TOP -->
+<div class="top">
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <div class="scenario-title-section">
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
+  </div>
+</div>
+
 # Exploring Stargate APIs from the command line - Document API
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the Document API.  This API deserves a little more explanation, as it is not what you might think of as a standard Cassandra database.  In this API, you give the database JSON objects and can then work with them based on their contents.  This database model doesn't require a schema, it just has the documents you put in there, which are placed in collections that you define.
