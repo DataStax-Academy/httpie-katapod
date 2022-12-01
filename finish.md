@@ -1,0 +1,1 @@
+Thanks for exploring the Stargate APIs!  You can use these examples as a jumping off point for further learning opportunities.
