@@ -91,3 +91,12 @@ Double checking - what tables are in my keyspace?
 `http :/rest/v2/schemas/keyspaces/workshop/tables`{{execute}}
 
 Now you can move on and check out the GraphQL API.
+
+<div id="navigation-bottom" class="navigation-bottom">
+ <a href='command:katapod.loadPage?[{"step":"step2"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
+ </a>
+ <a href='command:katapod.loadPage?[{"step":"step4"}]'
+    class="btn btn-dark navigation-bottom-right">Next ➡️ GraphQL API
+  </a>
+</div>

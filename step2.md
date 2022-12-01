@@ -46,3 +46,13 @@ Try the simpler call to make sure it works:
 `http :/rest/v1/keyspaces`{{execute}}
 
 Great, it's time to dive deeper into the Stargate APIs to see what they can do for you.
+
+<!-- NAVIGATION -->
+<div id="navigation-bottom" class="navigation-bottom">
+ <a href='command:katapod.loadPage?[{"step":"step1"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Create Astra DB
+ </a>
+ <a href='command:katapod.loadPage?[{"step":"step3"}]'
+    class="btn btn-dark navigation-bottom-right">Next ➡️ REST API
+  </a>
+</div>

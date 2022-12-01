@@ -53,3 +53,14 @@ You will see your new database `Pending` or `Initializing` in the Dashboard.
 The status will change to `Active` when the database is ready, this will only take 2-3 minutes and you will also receive an email when it is ready.
 
 #### Awesome! While you are waiting for your database to startup feel free to move to the next section.
+
+
+<!-- NAVIGATION -->
+<div id="navigation-bottom" class="navigation-bottom">
+ <a href='command:katapod.loadPage?[{"step":"step0"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Astra Overview
+ </a>
+ <a href='command:katapod.loadPage?[{"step":"step2"}]'
+    class="btn btn-dark navigation-bottom-right">Next ➡️ Set up workspace credentials
+  </a>
+</div>
