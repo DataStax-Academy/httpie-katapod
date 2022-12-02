@@ -25,7 +25,7 @@
               <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>
             </ul>
       </div>
-      <a href='command:katapod.loadPage?[{"step":"step0"}]' class="btn btn-primary btn-astra">
+      <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-astra">
               Astra Overview
       </a>
      </div>
