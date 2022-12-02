@@ -36,12 +36,7 @@ You can reuse the same token in our other labs, too.
 astra setup
 ```
 
-✅ List your existing Astra DB databases:
-```
-astra db list
-```
-
-✅ Create database `data-modeling` and keyspace `messaging_data` if they do not exist:
+✅ Create database `netlify` and keyspace `todos` if they do not exist:
 ```
 astra db create data-modeling -k messaging_data --if-not-exist --wait
 ```
@@ -50,13 +45,7 @@ This operation may take a bit longer when creating a new database or resuming an
 
 ✅ Verify that database `data-modeling` is `ACTIVE` and keyspace `messaging_data` exists:
 ```
-astra db get data-modeling
-```
-
-✅ Start the CQL shell and connect to database `data-modeling` and keyspace `messaging_data`:
-```
-clear
-astra db cqlsh data-modeling -k messaging_data
+astra db get netlify
 ```
 
 If the command fails, please revisit the previous steps to make sure that the database exists and is `ACTIVE`, and retry connecting to the database again.
