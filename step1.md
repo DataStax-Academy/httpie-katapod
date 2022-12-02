@@ -38,12 +38,12 @@ astra setup
 
 ✅ Create database `netlify` and keyspace `todos` if they do not exist:
 ```
-astra db create data-modeling -k messaging_data --if-not-exist --wait
+astra db create netlify -k todos --if-not-exist --wait
 ```
 
 This operation may take a bit longer when creating a new database or resuming an existing hibernated database.
 
-✅ Verify that database `data-modeling` is `ACTIVE` and keyspace `messaging_data` exists:
+✅ Verify that database `netlify` is `ACTIVE` and keyspace `todos` exists:
 ```
 astra db get netlify
 ```
