@@ -31,7 +31,7 @@
 
 You can reuse the same token in our other labs, too.
 
-✅ Setup Astra CLI by providing your application token:
+✅ Setup Astra CLI by providing the Database Administrator application token you created <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">here</a>:
 ```
 astra setup
 ```
