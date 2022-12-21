@@ -2,10 +2,7 @@
 
 ## Learn how to navigate the Stargate APIs using httpie
 
-**In this hands-on lab, you will:**
-* Create an Astra Database
-* Connect your workspace to that database
-* Explore CRUD functions using the HTTPie command line tool
+**In this hands-on lab, you will:** Explore CRUD functions using the HTTPie command line tool
 
 ## Start the hands-on lab:
 
