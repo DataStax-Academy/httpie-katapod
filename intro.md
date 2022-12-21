@@ -20,9 +20,7 @@
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Create an Astra Database</span></li>
-              <li><span class="scenario-objective">Connect your workspace to the Astra Database</span></li>
-              <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>
+              <li><span class="scenario-objective">Explore your Astra DB via Stargate APIs using httpie</span></li>
             </ul>
       </div>
       <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-astra">
