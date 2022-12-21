@@ -97,21 +97,29 @@ http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","
 ## 4. Delete the rows
 
 Barney's not really adding a lot of value.  Let's kick him out:
-`http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`{{execute}}
+```
+http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`
+```
 
 So wait, is he gone?
 
-`http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`{{execute}}
+```
+http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`
+```
 
 ## 5. Delete the table
 
 We don't need our table anymore, let's delete it.
 
-`http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen`{{execute}}
+```
+http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen`
+```
 
 Double checking - what tables are in my keyspace?
 
-`http :/rest/v2/schemas/keyspaces/workshop/tables`{{execute}}
+```
+http :/rest/v2/schemas/keyspaces/workshop/tables`
+```
 
 Now you can move on and check out the GraphQL API.
 
