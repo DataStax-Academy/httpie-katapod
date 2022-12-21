@@ -21,7 +21,8 @@ In this section you will use our httpie configuration to take a look at the Star
 
 The first thing that needs to happen is to create a table.  HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
 
-`http POST :/rest/v2/schemas/keyspaces/workshop/tables json:='{
+```
+http POST :/rest/v2/schemas/keyspaces/workshop/tables json:='{
   "name": "cavemen",
   "ifNotExists": false,
   "columnDefinitions": [
@@ -48,37 +49,50 @@ The first thing that needs to happen is to create a table.  HTTPie will handle t
       "firstname"
     ]
   }
-}'`{{execute}}
+}'
+```
 
-Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace:
+Just to be sure, go ahead and ask for a listing of the tables in the workshop keyspace:
 
-`http :/rest/v2/schemas/keyspaces/workshop/tables`{{execute}}
+```
+http :/rest/v2/schemas/keyspaces/workshop/tables
+```
 
 ## 2. Add some rows
 Great!  The table is created.  But it's kind of dull with no data.  Since it's looking for firstname and lastname, add a couple different rows with that data.
 
-`http POST :/rest/v2/keyspaces/workshop/cavemen json:='
+```
+http POST :/rest/v2/keyspaces/workshop/cavemen json:='
 {
             "firstname" : "Fred",
             "lastname": "Flintstone"
-}'`{{execute}}
+}'
+```
 
-`http POST :/rest/v2/keyspaces/workshop/cavemen json:='
+```
+http POST :/rest/v2/keyspaces/workshop/cavemen json:='
 {
             "firstname" : "Barney",
             "lastname": "Rubble"
-}'`{{execute}}
+}'
+```
 
 Check to make sure they're really in there:
-`http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`{{execute}}
+```
+http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`
+```
 
 ## 3. Update the rows
 
-`http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
-{ "occupation": "Quarry Screamer"}'`{{execute}}
+```
+http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
+{ "occupation": "Quarry Screamer"}'`
+```
 
 Check our work:
-`http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`{{execute}}
+```
+http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`
+```
 
 ## 4. Delete the rows
 
