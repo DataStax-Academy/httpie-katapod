@@ -9,4 +9,4 @@ github:
     main: true
 vscode:
    extensions:
-    - https://github.com/HadesArchitect/katapod/releases/download/nightly/katapod-nightly.vsix
+    - https://github.com/hemidactylus/katapod/releases/download/1.1.0-beta1/katapod-1.1.0-beta1.vsix
