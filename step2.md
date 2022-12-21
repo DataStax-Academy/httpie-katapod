@@ -23,23 +23,33 @@ HTTPie is an excellent API CLI tool, which we've extended to understand the astr
 pip3 install httpie-astra
 ```
 
-## 2. Set Up Credentials
+# 2. Create the credentials file
 
-It's waiting for you to paste in your variables, so you'll need to get those.
+```
+astra db create-dotenv -k workshop stargate
+```
 
+Now let's copy it to the .astrarc spot
 
+```
+cp .env ~/.astrarc
+```
 
 ## 3. Verify Credentials
 
 Make a call to the API using httpie to make sure your credentials are working:
 
-`http --auth-type astra -a default: :/rest/v1/keyspaces`{{execute}}
+```
+http --auth-type astra -a default: :/rest/v1/keyspaces
+```
 
 We've actually got an httpie config file so we can skip the auth-type stuff.
 
 Try the simpler call to make sure it works:
 
-`http :/rest/v1/keyspaces`{{execute}}
+```
+http :/rest/v1/keyspaces
+```
 
 Great, it's time to dive deeper into the Stargate APIs to see what they can do for you.
 
