@@ -34,16 +34,16 @@
 astra setup
 ```
 
-✅ Create database `netlify` and keyspace `todos` if they do not exist:
+✅ Create database `stargate` and keyspace `workshop` if they do not exist:
 ```
 astra db create stargate -k workshop --if-not-exist --wait
 ```
 
 This operation may take a bit longer when creating a new database or resuming an existing hibernated database.
 
-✅ Verify that database `netlify` is `ACTIVE` and keyspace `todos` exists:
+✅ Verify that database `stargate` is `ACTIVE` and keyspace `workshop` exists:
 ```
-astra db get netlify
+astra db get stargate
 ```
 
 If the command fails, please revisit the previous steps to make sure that the database exists and is `ACTIVE`, and retry connecting to the database again.
