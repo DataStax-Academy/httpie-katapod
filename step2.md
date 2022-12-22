@@ -20,7 +20,7 @@ In this step, we will:
 HTTPie is an excellent API CLI tool, which we've extended to understand the astra authentication model.  
 
 ```
-pip3 install httpie-astra
+pip3 install httpie-astra==0.0.15
 ```
 
 # 2. Create the credentials file
