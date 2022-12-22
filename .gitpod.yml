@@ -4,6 +4,8 @@ tasks:
       printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
       curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
+      mkdir -p $HOME/.config/httpie
+      cp assets/config.json $HOME/.config/httpie
 github:
   prebuilds:
     main: true
