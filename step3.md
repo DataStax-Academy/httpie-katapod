@@ -86,7 +86,7 @@ http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","
 
 ```
 http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
-{ "occupation": "Quarry Screamer"}'`
+{ "occupation": "Quarry Screamer"}'
 ```
 
 Check our work:
