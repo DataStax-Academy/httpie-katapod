@@ -32,7 +32,8 @@ astra db create-dotenv -k workshop stargate
 Now let's copy those credentials to our environment
 
 ```
-source .env
+echo "[default]" > ~/.astrarc
+cat .env | tr -d \" >> ~/.astrarc
 ```
 
 ## 3. Verify Credentials
