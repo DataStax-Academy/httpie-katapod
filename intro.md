@@ -24,7 +24,7 @@
             </ul>
       </div>
       <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-astra">
-              Astra Overview
+              Astra Setup
       </a>
      </div>
     </div>
