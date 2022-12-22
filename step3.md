@@ -79,7 +79,7 @@ http POST :/rest/v2/keyspaces/workshop/cavemen json:='
 
 Check to make sure they're really in there:
 ```
-http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`
+http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
 ```
 
 ## 3. Update the rows
@@ -91,20 +91,20 @@ http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
 
 Check our work:
 ```
-http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv`
+http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
 ```
 
 ## 4. Delete the rows
 
 Barney's not really adding a lot of value.  Let's kick him out:
 ```
-http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`
+http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
 ```
 
 So wait, is he gone?
 
 ```
-http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`
+http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
 ```
 
 ## 5. Delete the table
@@ -112,13 +112,13 @@ http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney`
 We don't need our table anymore, let's delete it.
 
 ```
-http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen`
+http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen
 ```
 
 Double checking - what tables are in my keyspace?
 
 ```
-http :/rest/v2/schemas/keyspaces/workshop/tables`
+http :/rest/v2/schemas/keyspaces/workshop/tables
 ```
 
 Now you can move on and check out the GraphQL API.
