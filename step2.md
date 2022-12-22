@@ -29,10 +29,10 @@ pip3 install httpie-astra
 astra db create-dotenv -k workshop stargate
 ```
 
-Now let's copy it to the .astrarc spot
+Now let's copy those credentials to our environment
 
 ```
-cp .env ~/.astrarc
+source .env
 ```
 
 ## 3. Verify Credentials
