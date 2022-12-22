@@ -21,49 +21,66 @@ In this section you will use our httpie configuration to take a look at the Star
 
 Before you get started, you'll need to grab a list of your namespaces in order to figure out the right path to use.
 
-`http :/rest/v2/schemas/namespaces | jq ".data[].name"`{{execute}}
-
+```
+http :/rest/v2/schemas/namespaces | jq ".data[].name"
+```
 Hey, look!  There's our friend 'workshop'.  A namespace is just a different way to organize data, and your keyspace is right there.  In fact, your keyspace should be in your environment variables, but just to check, try this:
 
-`cat ~/.astrarc | grep KEYSPACE`{{execute}}
+```
+cat ~/.astrarc | grep KEYSPACE
+```
 
 If that says "workshop" you're good to go, you'll get that for free as the KS placeholder in the queries.
 
-Otherwise just edit that file (it's in your current directory) to change the KEYSPACE to 'workshop'.
+Otherwise just edit that file (it's in your home directory) to change the KEYSPACE to 'workshop'.
 
 ## 2. Write a document
 
 OK, let's get some cavemen in there!  The collection name will be auto-created when you add the document, so it doesn't have to exist ahead of time.  We'll use the KS shortcut to grab the keyspace from our credentials resource file.
 
-`http POST :/rest/v2/namespaces/KS/collections/cavemen json:='{"firstname": "Fred", "lastname": "Flintstone"}'`{{execute}}
+```
+http POST :/rest/v2/namespaces/KS/collections/cavemen json:='{"firstname": "Fred", "lastname": "Flintstone"}'
+```
 
 Hmm, that document ID isn't easy to use, let's go ahead and specify one explicitly for Barney.
 
-`http PUT :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble json:='{"firstname": "Barney", "lastname": "Rubble"}'`{{execute}}
+```
+http PUT :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble json:='{"firstname": "Barney", "lastname": "Rubble"}'
+```
 
 Let's make sure our documents were written correctly:
 
-`http :/rest/v2/namespaces/KS/collections/cavemen page-size==5`{{execute}}
+```
+http :/rest/v2/namespaces/KS/collections/cavemen page-size==5
+```
 
 ## 3. Read documents
 
 IF you know the ID of your document, it's easy to see what's there:
 
-`http :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble`{{execute}}
+```
+http :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble
+```
 
 But where is Fred?  I didn't write down his document ID!  You can get the Document ID for anything by querying the values in the document.
 
-`http GET :/rest/v2/namespaces/KS/collections/cavemen where=='{"firstname": { "$eq": "Fred"}}'`{{execute}}
+```
+http GET :/rest/v2/namespaces/KS/collections/cavemen where=='{"firstname": { "$eq": "Fred"}}'
+```
 
 The "where" clause is really powerful, and allows you to combine different elements to really zero in on the document you want.
 
 You can even get just a subset of the document by specifying a particular section in the path.
 
-`http :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble/firstname`{{execute}}
+```
+http :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble/firstname
+```
 
 and you can use "where" to specify a range of documents:
 
-`http GET :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble where:='{"lastname": {"$gt": "Flintstone"}}'`{{execute}}
+```
+http GET :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble where:='{"lastname": {"$gt": "Flintstone"}}'
+```
 
 ## 3. Update documents
 
@@ -75,20 +92,28 @@ I'd like to give you a one-click way to set an env variable but alas, I think yo
 
 First, get your documentId.
 
-`http :/rest/v2/namespaces/KS/collections/cavemen where=='{"firstname": { "$eq": "Fred"}}'`{{execute}}
+```
+http :/rest/v2/namespaces/KS/collections/cavemen where=='{"firstname": { "$eq": "Fred"}}'
+```
 
 Next, export that ID into your environment
 
-`export DOCUMENT_ID=`{{copy}
+```
+export DOCUMENT_ID=
+```
+(paste the document ID and submit
 
 Again, giving Fred a job. Wilma thanks you.
 
-`http PATCH :/rest/v2/namespaces/KS/collections/cavemen/$DOCUMENT_ID json:='{"firstname":"Fred","lastname":"flintstone","occupation":"Quarry Screamer"}'`{{execute}}
+```
+http PATCH :/rest/v2/namespaces/KS/collections/cavemen/$DOCUMENT_ID json:='{"firstname":"Fred","lastname":"flintstone","occupation":"Quarry Screamer"}'
+```
 
 So, how's Fred looking now?
 
-`http GET :/rest/v2/namespaces/KS/collections/cavemen/$DOCUMENT_ID`{{execute}}
-
+```
+http GET :/rest/v2/namespaces/KS/collections/cavemen/$DOCUMENT_ID
+```
 
 ## 5. Delete the table
 
@@ -96,13 +121,17 @@ Not surprisingly, with this API, to delete a document you just, well, DELETE the
 
 Let's go ahead and kick Barney out again.  He's gotta be used to it by now.
 
-`http DELETE :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble`{{execute}}
+```
+http DELETE :/rest/v2/namespaces/KS/collections/cavemen/BarneyRubble
+```
 
 But what if you're done with all the cavemen and want to clear out your documents?  This one is also really easy:
 
-`http DELETE :/rest/v2/namespaces/KS/collections/cavemen`{{execute}}
+```
+http DELETE :/rest/v2/namespaces/KS/collections/cavemen
+```
 
-Fantastic!  We've gone over all three of the API types.  Next we'll harness the APIs using @astrajs, a handy node library.
+Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.
 
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"step4"}]'
