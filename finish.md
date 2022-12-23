@@ -23,9 +23,8 @@
       <div class="feature col div-choice">
         <div class="scenario-completed">Lab Completed. Congratulations!</div>
         <br/>
-        <div class="scenario-objectives">In this hands-on lab, you saw:</div>
+        <div class="scenario-objectives">In this hands-on lab, you learned:</div>
         <ul>
-              <li><span class="scenario-objective">Create an Astra Database</span></li>
               <li><span class="scenario-objective">Connect your workspace to the Astra Database</span></li>
               <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>       </ul>
       </div>
