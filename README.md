@@ -8,7 +8,10 @@
 
 [![Open in KataPod](https://github.com/DataStax-Academy/katapod-shared-assets/blob/main/images/open-in-katapod.png)](https://gitpod.io/#https://github.com/synedra/httpie-katapod)
 
-## Want to use this on your local system?
+----
+# Want to use this on your local system?
+
+Follow these steps.
 
 ### [Python 3](https://www.python.org/downloads/) and httpie-astra
 
