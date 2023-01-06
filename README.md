@@ -28,3 +28,5 @@ curl -Ls "https://dtsx.io/get-astra-cli" | bash
 ### Database token
 
 A [Database Administrator token](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure) for your database
+
+... then follow the Katapod steps on your system to see how everything works!
