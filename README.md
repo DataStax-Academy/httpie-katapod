@@ -7,3 +7,21 @@
 ## Start the hands-on lab:
 
 [![Open in KataPod](https://github.com/DataStax-Academy/katapod-shared-assets/blob/main/images/open-in-katapod.png)](https://gitpod.io/#https://github.com/synedra/httpie-katapod)
+
+## Want to use this on your local system?
+
+### [Python 3](https://www.python.org/downloads/) and httpie-astra
+
+```
+pip install httpie-astra
+```
+
+### [astra CLI](https://github.com/datastax-labs/astra-cli)
+
+```
+curl -Ls "https://dtsx.io/get-astra-cli" | bash
+```
+
+### Database token
+
+A [Database Administrator token](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure) for your database
