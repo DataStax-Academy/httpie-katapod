@@ -7,7 +7,7 @@
   </div>
 </div>
 
-# Exploring Stargate APIs from the command line - GraphQL
+# Exploring Stargate APIs from the command line - GraphQL (CQL First)
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the GraphQL API
 
@@ -24,17 +24,33 @@ The first thing that needs to happen is to create a table.  HTTPie will handle t
 ```
 http POST :/graphql-schema query='
 mutation createTables {
-    cavemen: createTable(
-        keyspaceName: "workshop", 
-        tableName: "cavemen", 
-        partitionKeys: 
-            [{name: "lastname", type: {basic: TEXT}}], 
-        clusteringKeys: 
-            [{name: "firstname", type: {basic: TEXT}}],
-        values: [
-            { name: "occupation", type: {basic: TEXT} }
-        ]
-)}'
+  book: createTable(
+    keyspaceName:"library",
+    tableName:"book",
+    partitionKeys: [ # The keys required to access your data
+      { name: "title", type: {basic: TEXT} }
+    ]
+    clusteringKeys: [
+      { name: "author", type: {basic: TEXT} }
+    ]
+  )
+  reader: createTable(
+    keyspaceName:"library",
+    tableName:"reader",
+    partitionKeys: [
+      { name: "name", type: {basic: TEXT} }
+    ]
+    clusteringKeys: [ # Secondary key used to access values within the partition
+      { name: "user_id", type: {basic: UUID}, order: "ASC" }
+  	]
+    values: [
+      { name: "birthdate", type: {basic: DATE} }
+      { name: "email", type: {basic: SET, info:{ subTypes: [ { basic: TEXT } ] } } }
+      { name: "reviews", type: {basic: TUPLE, info: { subTypes: [ { basic: TEXT }, { basic: INT }, { basic: DATE } ] } } }
+      { name: "addresses", type: { basic: LIST, info: { subTypes: [ { basic: UDT, info: { name: "address_type", frozen: true } } ] } } }
+    ]
+  )
+}'
 ```
 
 Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace:
@@ -43,8 +59,71 @@ Just to be sure, go ahead and ask for a listing of the tables in the Workshop ke
 http :/rest/v2/schemas/keyspaces/workshop/tables
 ```
 
+Now, let's create a table with a MAP.
+```
+http POST :/graphql-schema query='
+mutation createMapTable {
+  badge: createTable (
+    keyspaceName:"library",
+    tableName: "badge",
+    partitionKeys: [
+      {name: "btype", type: {basic:TEXT}}
+    ]
+    clusteringKeys: [
+      { name: "badge_id", type: { basic: INT} }
+    ],
+    ifNotExists:true,
+    values: [
+      {name: "earned", type:{basic:LIST { basic:MAP, info:{ subTypes: [ { basic: TEXT }, {basic: DATE}]}}}}
+    ]
+  )
+}'
+```
+
+If you need to add more attributes to something you are storing in a table, you can add one or more columns:
+```
+http POST :/graphql-schema query='
+mutation alterTableAddCols {
+  alterTableAdd(
+    keyspaceName:"library",
+    tableName:"book",
+    toAdd:[
+      { name: "isbn", type: { basic: TEXT } }
+      { name: "language", type: {basic: TEXT} }
+      { name: "pub_year", type: {basic: INT} }
+      { name: "genre", type: {basic:SET, info:{ subTypes: [ { basic: TEXT } ] } } }
+      { name: "format", type: {basic:SET, info:{ subTypes: [ { basic: TEXT } ] } } }
+    ]
+  )
+}'
+```
+
+To check how your tables are looking, execute a query to see them:
+```
+http POST :/graphql-schema query='
+query GetTables {
+  keyspace(name: "library") {
+      name
+      tables {
+          name
+          columns {
+              name
+              kind
+              type {
+                  basic
+                  info {
+                      name
+                  }
+              }
+          }
+      }
+  }
+}'
+```
+
+
 ## 2. Add some rows
-Great!  The table is created.  But it's kind of dull with no data.  Since it's looking for firstname and lastname, add a couple different rows with that data.
+The table is created.  But it's kind of dull with no data.  Since it's looking for firstname and lastname, add a couple different rows with that data.
 
 ```
 http POST :/graphql/workshop query='

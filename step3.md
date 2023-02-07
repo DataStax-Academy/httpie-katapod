@@ -9,32 +9,35 @@
 
 # Exploring Stargate APIs from the command line - REST
 
-In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the REST API
+In this section you will use our httpie configuration to take a look at the Stargate APIs. In this section we will use the REST API
 
-* REST - Create a Table
-* REST - Add some rows
-* REST - Update the rows
-* REST - Delete the rows
-* REST - Delete the table
+- REST - Create a Table
+- REST - Add some rows
+- REST - Update the rows
+- REST - Delete the rows
+- REST - Delete the table
 
 ### 1. Create a table
 
-The first thing that needs to happen is to create a table.  HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
+The first thing that needs to happen is to create a table. HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
 
 Here are the steps:
 
 #### A. Check for your keyspace
+
 ```
 http :/rest/v2/schemas/keyspaces
 
 ```
-Do you see 'library' in there?  Great, we're ready to move on.  You could also check for a specific keyspace:
+
+Do you see 'library' in there? Great, we're ready to move on. You could also check for a specific keyspace:
 
 ```
 http :/rest/v2/schemas/keyspaces/library
 ```
 
 #### B. Create the table
+
 ```
 
 http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
@@ -64,7 +67,8 @@ http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
 	    "defaultTimeToLive": 0,
 	    "clusteringExpression":
 	      [{ "column": "lastname", "order": "ASC" }]
-	  }'
+	  }
+}'
 ```
 
 Just to be sure, go ahead and ask for a listing of the tables in the workshop keyspace:
@@ -73,8 +77,14 @@ Just to be sure, go ahead and ask for a listing of the tables in the workshop ke
 http :/rest/v2/schemas/keyspaces/workshop/tables
 ```
 
+or specify the table you want:
+```
+http :/rest/v2/schemas/keyspaces/workshop/tables/users
+```
+
 ## 2. Add some rows
-Great!  The table is created.  But it's kind of dull with no data.  Since it's looking for firstname and lastname, add a couple different rows with that data.
+
+Great! The table is created. But it's kind of dull with no data. Since it's looking for firstname and lastname, add a couple different rows with that data.
 
 ```
 http POST :/rest/v2/keyspaces/workshop/cavemen json:='
@@ -93,6 +103,7 @@ http POST :/rest/v2/keyspaces/workshop/cavemen json:='
 ```
 
 Check to make sure they're really in there:
+
 ```
 http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
 ```
@@ -105,13 +116,15 @@ http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
 ```
 
 Check our work:
+
 ```
 http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
 ```
 
 ## 4. Delete the rows
 
-Barney's not really adding a lot of value.  Let's kick him out:
+Barney's not really adding a lot of value. Let's kick him out:
+
 ```
 http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
 ```
