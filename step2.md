@@ -11,22 +11,15 @@
 
 **Objectives**
 In this step, we will:
-1. Install HTTPie
+1. Create Credentials
 2. Verify Credentials
 
 ---
 
-# 1. Install HTTPie
-HTTPie is an excellent API CLI tool, which we've extended to understand the astra authentication model.  
+# 1. Create the credentials file
 
 ```
-pip3 install httpie-astra==0.0.16
-```
-
-# 2. Create the credentials file
-
-```
-astra db create-dotenv -k workshop stargate
+astra db create-dotenv -k library workshops
 ```
 
 Now let's copy those credentials to our environment
@@ -36,7 +29,7 @@ echo "[default]" > ~/.astrarc
 cat .env | tr -d \" >> ~/.astrarc
 ```
 
-## 3. Verify Credentials
+## 2. Verify Credentials
 
 Make a call to the API using httpie to make sure your credentials are working:
 
