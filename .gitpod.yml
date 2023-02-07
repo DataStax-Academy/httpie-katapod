@@ -6,6 +6,7 @@ tasks:
       curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
       mkdir -p $HOME/.config/httpie
       cp assets/config.json $HOME/.config/httpie
+      pip3 install httpie-astra==0.0.16
 github:
   prebuilds:
     main: true
