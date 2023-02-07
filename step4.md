@@ -27,7 +27,7 @@ mutation createTables {
   book: createTable(
     keyspaceName:"library",
     tableName:"book",
-    partitionKeys: [ # The keys required to access your data
+    partitionKeys: [ 
       { name: "title", type: {basic: TEXT} }
     ]
     clusteringKeys: [
@@ -40,7 +40,7 @@ mutation createTables {
     partitionKeys: [
       { name: "name", type: {basic: TEXT} }
     ]
-    clusteringKeys: [ # Secondary key used to access values within the partition
+    clusteringKeys: [ 
       { name: "user_id", type: {basic: UUID}, order: "ASC" }
   	]
     values: [
