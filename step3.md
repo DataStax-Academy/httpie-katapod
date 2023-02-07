@@ -21,35 +21,50 @@ In this section you will use our httpie configuration to take a look at the Star
 
 The first thing that needs to happen is to create a table.  HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
 
+Here are the steps:
+
+#### A. Check for your keyspace
 ```
-http POST :/rest/v2/schemas/keyspaces/workshop/tables json:='{
-  "name": "cavemen",
-  "ifNotExists": false,
-  "columnDefinitions": [
-    {
-      "name": "firstname",
-      "typeDefinition": "text",
-      "static": false
-    },
-    {
-      "name": "lastname",
-      "typeDefinition": "text",
-      "static": false
-    },
+http :/rest/v2/schemas/keyspaces
+
+```
+Do you see 'library' in there?  Great, we're ready to move on.  You could also check for a specific keyspace:
+
+```
+http :/rest/v2/schemas/keyspaces/library
+```
+
+#### B. Create the table
+```
+
+http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
+	"name": "users",
+	"columnDefinitions":
+	  [
         {
-	      "name": "occupation",
+	      "name": "firstname",
+	      "typeDefinition": "text"
+	    },
+        {
+	      "name": "lastname",
+	      "typeDefinition": "text"
+	    },
+        {
+	      "name": "favorite color",
 	      "typeDefinition": "text"
 	    }
-  ],
-  "primaryKey": {
-    "partitionKey": [
-      "lastname"
-    ],
-    "clusteringKey": [
-      "firstname"
-    ]
-  }
-}'
+	  ],
+	"primaryKey":
+	  {
+	    "partitionKey": ["firstname"],
+	    "clusteringKey": ["lastname"]
+	  },
+	"tableOptions":
+	  {
+	    "defaultTimeToLive": 0,
+	    "clusteringExpression":
+	      [{ "column": "lastname", "order": "ASC" }]
+	  }'
 ```
 
 Just to be sure, go ahead and ask for a listing of the tables in the workshop keyspace:
