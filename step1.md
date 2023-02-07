@@ -34,16 +34,16 @@
 astra setup
 ```
 
-✅ Create database `stargate` and keyspace `workshop` if they do not exist:
+✅ Create database `workshops` and keyspace `library` if they do not exist:
 ```
-astra db create stargate -k workshop --if-not-exist --wait
+astra db create workshops -k library --if-not-exist --wait
 ```
 
 This operation may take a bit longer when creating a new database or resuming an existing hibernated database.
 
-✅ Verify that database `stargate` is `ACTIVE` and keyspace `workshop` exists:
+✅ Verify that database `workshops` is `ACTIVE` and keyspace `library` exists:
 ```
-astra db get stargate
+astra db get workshops
 ```
 
 If the command fails, please revisit the previous steps to make sure that the database exists and is `ACTIVE`, and retry connecting to the database again.
