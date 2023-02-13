@@ -467,7 +467,7 @@ mutation dropTableBook {
 Now you can move on and check out the Document API.
 
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step3"}]'
+ <a href='command:katapod.loadPage?[{"step":"step4"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
  </a>
  <a href='command:katapod.loadPage?[{"step":"step5"}]'
