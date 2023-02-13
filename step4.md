@@ -17,6 +17,26 @@ In this section you will use our httpie configuration to take a look at the Star
 * GraphQL - Delete the rows
 * GraphQL - Delete the table
 
+### 0. Create a UDT (User Defined Type)
+
+Cassandra provides User Defined Types for you to keep your data organized more efficiently and tidy up your table definitions.
+
+```
+http POST :/graphql-schema query='
+mutation createAddressUDT {
+  createType(
+    keyspaceName: "library"
+    typeName: "address_type"
+    fields: [
+      { name: "street", type: { basic: TEXT } }
+      { name: "city", type: { basic: TEXT } }
+      { name: "state", type: { basic: TEXT } }
+      { name: "zip", type: { basic: TEXT } }
+    ]
+  )
+}'
+```
+
 ### 1. Create a table
 
 The first thing that needs to happen is to create a table.  HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
@@ -56,7 +76,7 @@ mutation createTables {
 Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace:
 
 ```
-http :/rest/v2/schemas/keyspaces/workshop/tables
+http :/rest/v2/schemas/keyspaces/library/tables
 ```
 
 Now, let's create a table with a MAP.
@@ -123,59 +143,99 @@ query GetTables {
 
 
 ## 2. Add some rows
-The table is created.  But it's kind of dull with no data.  Since it's looking for firstname and lastname, add a couple different rows with that data.
+You can insert rows one at a time, or use a command like this to create two rows at once.
 
 ```
-http POST :/graphql/workshop query='
-mutation insertcavemen {
-  barney: insertcavemen(value: {firstname:"Barney", lastname: "Rubble"}) {
+http POST :/graphql/library query='
+mutation insert2Books {
+  moby: insertbook(value: {title:"Moby Dick", author:"Herman Melville"}) {
     value {
-      firstname
+      title
+    }
+  }
+  catch22: insertbook(value: {title:"Catch-22", author:"Joseph Heller"}) {
+    value {
+      title
     }
   }
 }'
 ```
 
+Inserting lists is easy, give a command like this one:
+
 ```
-http POST :/graphql/workshop query='
-mutation insertcavemen {
-  fred: insertcavemen(value: {firstname:"Fred", lastname: "Flintstone"}) {
+# insert an article USING A LIST (authors)
+http POST :/graphql/library query='
+mutation insertArticle {
+  magarticle: insertarticle(value: {title:"How to use GraphQL", authors: ["First author", "Second author"], mtitle:"Database Magazine"}) {
     value {
-      firstname
+      title
+      mtitle
+      authors
     }
   }
 }'
 ```
 
-Check to make sure Barney's really in there:
+A map is a little more complex.
 
 ```
-http POST :/graphql/workshop query='
-query getCaveman {
-    cavemen (value: {lastname:"Rubble"}) {
+http POST :/graphql/library query='
+mutation insertOneBadge {
+  gold: insertBadges(value: { btype:"Gold", earned: "2020-11-20", category: ["Editor", "Writer"] } ) {
+    value {
+      btype
+      earned
+      category
+    }
+  }
+}'
+```
+
+Using a UDT requires that you be very specific about your terms.
+
+```
+http POST :/graphql/library query='
+mutation insertReaderWithUDT{
+  ag: insertreader(
+    value: {
+      user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64"
+      name: "Allen Ginsberg"
+      birthdate: "1926-06-03"
+      addresses: [{ street: "Haight St", city: "San Francisco", zip: "94016" }]
+    }
+  ) {
+    value {
+      user_id
+      name
+      birthdate
+      addresses {
+        street
+        city
+        zip
+      }
+    }
+  }
+ }'
+ ```
+
+## 3. Retrieve the rows
+
+Get one book using the primary key title with a value
+
+```
+http POST :/graphql/workshop query=' 
+query oneBook {
+    book (value: {title:"Moby Dick"}) {
       values {
-      	lastname
+      	title
+      	author
       }
     }
 }'
 ```
 
-## 3. Update the rows
-
-Again, giving Fred a job.
-
-```
-http POST :/graphql/workshop query='
-mutation updatecavemen {
-  fred: updatecavemen(value: {firstname:"Fred",lastname:"Flintstone",occupation:"Quarry Screamer"}, ifExists: true ) {
-    value {
-      firstname
-    }
-  }
-}'
-```
-
-Check our work:
+To find multiple books, an addition to the WHERE clause is required, to denote that the list of titles desired is IN a group:
 
 ```
 http POST :/graphql/workshop query='
@@ -187,44 +247,80 @@ http POST :/graphql/workshop query='
 }}'
 ```
 
-## 4. Delete the rows
+```
+http POST :/graphql/workshop query='
+query ThreeBooks {
+  book(filter: { title: { in: ["Native Son", "Moby Dick", "Catch-22"] } } ) {
+      values {
+      	title
+	author
+     }
+   }
+}'
+```
 
-Barney's not really adding a lot of value.  Let's kick him out:
+To display the contents of a UDT, notice the inclusion of addresses in the values displayed for this read query:
 
 ```
 http POST :/graphql/workshop query='
-mutation deletecavemen {
-  barney: deletecavemen(value: {firstname:"Barney",lastname:"Rubble"}, ifExists: true ) {
-    value {
-      firstname
+query getReaderWithUDT{
+  reader(value: { name:"Allen Ginsberg" user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64" }) {
+    values {
+      name
+      birthdate
+      addresses {
+        street
+        city
+        zip
+      }
     }
   }
 }'
 ```
 
-So wait, is he gone?
+To display the contents of a map collection, notice the inclusion of earned in the values displayed for this read query:
+```
+http POST :/graphql/workshop query='
+query oneGoldBadge {
+  badge(value: { badge_type: "Gold" } ) {
+      values {
+      	badge_type
+        badge_id
+        earned {
+        key
+        value
+      }
+     }
+  }
+}'
+```
+
+## 4. Delete
+
+Delete columns from table schema
+If you find an attribute is no longer required in a table, you can remove a column. All column data will be deleted along with the column schema.
 
 ```
 http POST :/graphql/workshop query='
-    query cavemen {
-    cavemen(filter: {lastname: {in: ["Rubble", "Flintstone"]}}) {
-    values {firstname}
-}}'
+mutation dropColumnFormat {
+    alterTableDrop(
+    keyspaceName:"library",
+    tableName:"book",
+    toDrop:["format"]
+  )
+}'
 ```
 
-## 5. Delete the table
-
-We don't need our table anymore, let's delete it.  We need to use the REST API for this.
+You can delete a table. All data will be deleted along with the table schema.
 
 ```
-http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen
+http POST :/graphql/workshop query='
+mutation dropTableBook {
+  dropTable(keyspaceName:"library",
+    tableName:"article")
+}'
 ```
 
-Double checking - what tables are in my keyspace?
-
-```
-http :/rest/v2/schemas/keyspaces/workshop/tables
-```
 
 Now you can move on and check out the Document API.
 
