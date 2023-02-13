@@ -79,27 +79,6 @@ Just to be sure, go ahead and ask for a listing of the tables in the Workshop ke
 http :/rest/v2/schemas/keyspaces/library/tables
 ```
 
-Now, let's create a table with a MAP.
-```
-http POST :/graphql-schema query='
-mutation createMapTable {
-  badge: createTable (
-    keyspaceName:"library",
-    tableName: "badge",
-    partitionKeys: [
-      {name: "btype", type: {basic:TEXT}}
-    ]
-    clusteringKeys: [
-      { name: "badge_id", type: { basic: INT} }
-    ],
-    ifNotExists:true,
-    values: [
-      {name: "earned", type:{basic:LIST { basic:MAP, info:{ subTypes: [ { basic: TEXT }, {basic: DATE}]}}}}
-    ]
-  )
-}'
-```
-
 If you need to add more attributes to something you are storing in a table, you can add one or more columns:
 ```
 http POST :/graphql-schema query='
