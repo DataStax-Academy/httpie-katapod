@@ -307,7 +307,7 @@ Now you can move on and check out the Document API.
  <a href='command:katapod.loadPage?[{"step":"step3"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
  </a>
- <a href='command:katapod.loadPage?[{"step":"step5"}]'
+ <a href='command:katapod.loadPage?[{"step":"step4b"}]'
     class="btn btn-dark navigation-bottom-right">Next ➡️ Document API
   </a>
 </div>
