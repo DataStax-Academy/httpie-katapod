@@ -337,6 +337,7 @@ http PUT :/rest/v2/namespaces/library/collections/library/John-Smith' query:='  
      }
  }
 '
+```
 
 ### 3. Read Documents
 
@@ -386,6 +387,102 @@ http :/rest/v2/namespaces/library/collections/library?where={"reader.name":{"$eq
 If you want more details, check out the [Stargate Documentation](https://stargate.io/docs/latest/develop/dev-with-doc.html#search-collections-for-documents-with-operators-eq-ne-or-and-not-gt-gte-lt-lte-in-nin) for the Document API
 
 4. Update Documents
+
+The easiest way to update a document is to use PUT to replace it:
+
+```
+http PUT :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+{
+  "stuff": "long-ID-number",
+  "other": "Changed information in the doc."
+}'
+```
+
+Get that document to make sure the changes happened:
+
+```
+http :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+```
+
+A 'PATCH' request using a document-id will replace the targeted data in a JSON object contained in the document. JSON objects are delimited by { } in the data. If you have an array, delimited by '[ ]' in the JSON object targeted, or a scalar value, the values will be overwritten.
+
+```
+http PATCH :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+{
+  "newfield": "Hope I didn't lose my existing fields!"
+}'
+```
+
+Check out the results:
+
+```
+http :/rest/v2/namespaces/library/collections/library/long-ID-number
+```
+
+Another example using an array:
+
+```
+http PATCH :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+{
+  "yet-another-field": "Hopefully, I haven'\''t lost my other two fields!",
+  "languages": [
+     "English",
+     "German",
+     "French"
+  ]
+}'
+```
+
+And grab that document again:
+
+```
+http :/rest/v2/namespaces/library/collections/library/long-ID-number
+```
+It is also possible to update only part of a document. Using a PUT request, you can replace current data in a document. To partially update, send a PUT request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example will change the book title from Native Son to Native Daughter:
+
+```
+http PUT :/rest/v2/namespaces/test/collections/library/native-son-doc-id/book json:='
+{ "title": "Native Daughter" }'
+
+Check the results:
+```
+http :/rest/v2/namespaces/test/collections/library/native-son-doc-id
+```
+
+Using a PATCH request, you can overwrite current data in a document. To partially update, send a PATCH request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example overwrites a book’s information:
+
+```
+http PATCH :/rest/v2/namespaces/test/collections/library/native-son-doc-id/book json:='
+{
+  "book": {
+    "title": "Native Daughter",
+    "isbn": "12322",
+    "author": [
+        "Richard Wright"
+    ],
+    "pub-year": 1930,
+    "genre": [
+        "poverty",
+        "action"
+    ],
+    "format": [
+        "hardback",
+        "paperback",
+        "epub"
+    ],
+    "languages": [
+        "English",
+        "German",
+        "French"
+    ]
+  }
+}'
+```
+
+Check the results:
+```
+http :/rest/v2/namespaces/test/collections/library/native-son-doc-id
+```
 
 Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.
 
