@@ -107,20 +107,19 @@ http POST :/rest/v2/keyspaces/library/users json:='
 Check to make sure they're really in there:
 
 ```
-http :/rest/v2/keyspaces/library/users where=='{"lastname":{"$in":["Doesha","Betts"]}}' -vvv
+http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
 
 ## 3. Update the rows
 
 ```
-http PUT :/rest/v2/keyspaces/workshop/cavemen/Doesha/Janesha json:='
-{ "favorite color": "Fuschia"}'
+http PUT :/rest/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuschia"}'
 ```
 
 Check our work:
 
 ```
-http :/rest/v2/keyspaces/library/users where=='{"lastname":{"$in":["Doesha","Betts"]}}' -vvv
+http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
 
 ## 4. Delete the rows
@@ -128,13 +127,13 @@ http :/rest/v2/keyspaces/library/users where=='{"lastname":{"$in":["Doesha","Bet
 Janesha has moved away.  Let's remove them from the database.
 
 ```
-http DELETE :/rest/v2/keyspaces/library/users/Doesha/Janesha
+http DELETE :/rest/v2/keyspaces/library/users/Janesha/Doesha
 ```
 
 So wait, are they gone?
 
 ```
-http :/rest/v2/keyspaces/library/users/Doesha/Janesha
+http :/rest/v2/keyspaces/library/users/Janesha/Doesha
 ```
 
 ## 5. Delete the table
