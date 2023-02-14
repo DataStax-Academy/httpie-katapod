@@ -36,7 +36,7 @@ Do you see 'library' in there? Great, we're ready to move on. You could also che
 http :/rest/v2/schemas/keyspaces/library
 ```
 
-#### B. Create the table
+#### B. Create the tables
 
 ```
 
@@ -71,34 +71,38 @@ http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
 }'
 ```
 
-Just to be sure, go ahead and ask for a listing of the tables in the workshop keyspace:
+Just to be sure, go ahead and ask for a listing of the tables in the library keyspace:
 
 ```
-http :/rest/v2/schemas/keyspaces/workshop/tables
+http :/rest/v2/schemas/keyspaces/library/tables
 ```
 
 or specify the table you want:
 ```
-http :/rest/v2/schemas/keyspaces/workshop/tables/users
+http :/rest/v2/schemas/keyspaces/library/tables/users
 ```
 
 ## 2. Add some rows
 
-Great! The table is created. But it's kind of dull with no data. Since it's looking for firstname and lastname, add a couple different rows with that data.
+Great! The table is created. But it's kind of dull with no data. Go ahead and a00-dd a couple different rows with that data.
 
 ```
-http POST :/rest/v2/keyspaces/workshop/cavemen json:='
+http POST :/rest/v2/keyspaces/library/users json:='
 {
-            "firstname" : "Fred",
-            "lastname": "Flintstone"
+    "firstname": "Mookie",
+    "lastname": "Betts",
+    "email": "mookie.betts@gmail.com",
+    "favorite color": "blue"
 }'
 ```
 
 ```
-http POST :/rest/v2/keyspaces/workshop/cavemen json:='
+http POST :/rest/v2/keyspaces/library/users json:='
 {
-            "firstname" : "Barney",
-            "lastname": "Rubble"
+    "firstname": "Janesha",
+    "lastname": "Doesha",
+    "email": "janesha.doesha@gmail.com",
+    "favorite color": "grey"
 }'
 ```
 
