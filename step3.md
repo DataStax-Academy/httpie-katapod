@@ -91,7 +91,6 @@ http POST :/rest/v2/keyspaces/library/users json:='
 {
     "firstname": "Mookie",
     "lastname": "Betts",
-    "email": "mookie.betts@gmail.com",
     "favorite color": "blue"
 }'
 ```
@@ -101,7 +100,6 @@ http POST :/rest/v2/keyspaces/library/users json:='
 {
     "firstname": "Janesha",
     "lastname": "Doesha",
-    "email": "janesha.doesha@gmail.com",
     "favorite color": "grey"
 }'
 ```
