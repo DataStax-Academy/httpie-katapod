@@ -25,6 +25,7 @@ Here are the steps:
 
 #### A. Check for your keyspace
 
+
 ```
 http :/rest/v2/schemas/keyspaces
 
@@ -32,11 +33,13 @@ http :/rest/v2/schemas/keyspaces
 
 Do you see 'library' in there? Great, we're ready to move on. You could also check for a specific keyspace:
 
+
 ```
 http :/rest/v2/schemas/keyspaces/library
 ```
 
 #### B. Create the tables
+
 
 ```
 
