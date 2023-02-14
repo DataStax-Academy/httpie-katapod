@@ -84,7 +84,7 @@ http :/rest/v2/schemas/keyspaces/library/tables/users
 
 ## 2. Add some rows
 
-Great! The table is created. But it's kind of dull with no data. Go ahead and a00-dd a couple different rows with that data.
+Great! The table is created. But it's kind of dull with no data. Go ahead and add a couple different rows with that data.
 
 ```
 http POST :/rest/v2/keyspaces/library/users json:='
@@ -109,34 +109,34 @@ http POST :/rest/v2/keyspaces/library/users json:='
 Check to make sure they're really in there:
 
 ```
-http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
+http :/rest/v2/keyspaces/library/users where=='{"lastname":{"$in":["Doesha","Betts"]}}' -vvv
 ```
 
 ## 3. Update the rows
 
 ```
-http PUT :/rest/v2/keyspaces/workshop/cavemen/Flintstone/Fred json:='
-{ "occupation": "Quarry Screamer"}'
+http PUT :/rest/v2/keyspaces/workshop/cavemen/Doesha/Janesha json:='
+{ "favorite color": "Fuschia"}'
 ```
 
 Check our work:
 
 ```
-http :/rest/v2/keyspaces/workshop/cavemen where=='{"lastname":{"$in":["Rubble","Flintstone"]}}' -vvv
+http :/rest/v2/keyspaces/library/users where=='{"lastname":{"$in":["Doesha","Betts"]}}' -vvv
 ```
 
 ## 4. Delete the rows
 
-Barney's not really adding a lot of value. Let's kick him out:
+Janesha has moved away.  Let's remove them from the database.
 
 ```
-http DELETE :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
+http DELETE :/rest/v2/keyspaces/library/users/Doesha/Janesha
 ```
 
-So wait, is he gone?
+So wait, are they gone?
 
 ```
-http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
+http :/rest/v2/keyspaces/library/users/Doesha/Janesha
 ```
 
 ## 5. Delete the table
@@ -144,13 +144,13 @@ http :/rest/v2/keyspaces/workshop/cavemen/Rubble/Barney
 We don't need our table anymore, let's delete it.
 
 ```
-http DELETE :/rest/v2/schemas/keyspaces/workshop/tables/cavemen
+http DELETE :/rest/v2/schemas/keyspaces/library/tables/users
 ```
 
 Double checking - what tables are in my keyspace?
 
 ```
-http :/rest/v2/schemas/keyspaces/workshop/tables
+http :/rest/v2/schemas/keyspaces/library/tables
 ```
 
 Now you can move on and check out the GraphQL API.
