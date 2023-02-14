@@ -140,36 +140,6 @@ mutation insert2Books {
 }'
 ```
 
-Inserting lists is easy, give a command like this one:
-
-```
-# insert an article USING A LIST (authors)
-http POST :/graphql/library query='
-mutation insertArticle {
-  magarticle: insertarticle(value: {title:"How to use GraphQL", authors: ["First author", "Second author"], mtitle:"Database Magazine"}) {
-    value {
-      title
-      mtitle
-      authors
-    }
-  }
-}'
-```
-
-A map is a little more complex.
-
-```
-http POST :/graphql/library query='
-mutation insertOneBadge {
-  gold: insertBadges(value: { btype:"Gold", earned: "2020-11-20", category: ["Editor", "Writer"] } ) {
-    value {
-      btype
-      earned
-      category
-    }
-  }
-}'
-```
 
 Using a UDT requires that you be very specific about your terms.
 
@@ -203,7 +173,7 @@ mutation insertReaderWithUDT{
 Get one book using the primary key title with a value
 
 ```
-http POST :/graphql/workshop query=' 
+http POST :/graphql/library query=' 
 query oneBook {
     book (value: {title:"Moby Dick"}) {
       values {
@@ -216,18 +186,9 @@ query oneBook {
 
 To find multiple books, an addition to the WHERE clause is required, to denote that the list of titles desired is IN a group:
 
-```
-http POST :/graphql/workshop query='
-    query cavemen {
-    cavemen(filter: {lastname: {in: ["Rubble", "Flintstone"]}}) {
-    values {firstname
-    lastname
-    occupation}
-}}'
-```
 
 ```
-http POST :/graphql/workshop query='
+http POST :/graphql/library query='
 query ThreeBooks {
   book(filter: { title: { in: ["Native Son", "Moby Dick", "Catch-22"] } } ) {
       values {
@@ -241,7 +202,7 @@ query ThreeBooks {
 To display the contents of a UDT, notice the inclusion of addresses in the values displayed for this read query:
 
 ```
-http POST :/graphql/workshop query='
+http POST :/graphql/library query='
 query getReaderWithUDT{
   reader(value: { name:"Allen Ginsberg" user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64" }) {
     values {
@@ -257,47 +218,16 @@ query getReaderWithUDT{
 }'
 ```
 
-To display the contents of a map collection, notice the inclusion of earned in the values displayed for this read query:
-```
-http POST :/graphql/workshop query='
-query oneGoldBadge {
-  badge(value: { badge_type: "Gold" } ) {
-      values {
-      	badge_type
-        badge_id
-        earned {
-        key
-        value
-      }
-     }
-  }
-}'
-```
 
 ## 4. Delete
 
-Delete columns from table schema
-If you find an attribute is no longer required in a table, you can remove a column. All column data will be deleted along with the column schema.
+
+You can delete a table. All data will be deleted along with the table schema. The easiest way is to delete it using the REST API.
 
 ```
-http POST :/graphql/workshop query='
-mutation dropColumnFormat {
-    alterTableDrop(
-    keyspaceName:"library",
-    tableName:"book",
-    toDrop:["format"]
-  )
-}'
-```
+http DELETE :/rest/v2/schemas/keyspaces/library/tables/reader
+http DELETE :/rest/v2/schemas/keyspaces/library/tables/book
 
-You can delete a table. All data will be deleted along with the table schema.
-
-```
-http POST :/graphql/workshop query='
-mutation dropTableBook {
-  dropTable(keyspaceName:"library",
-    tableName:"article")
-}'
 ```
 
 
