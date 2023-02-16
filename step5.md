@@ -268,11 +268,13 @@ And grab that document again:
 ```
 http :/rest/v2/namespaces/library/collections/library/long-ID-number
 ```
+
 It is also possible to update only part of a document. Using a PUT request, you can replace current data in a document. To partially update, send a PUT request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example will change the book title from Native Son to Native Daughter:
 
 ```
 http PUT :/rest/v2/namespaces/test/collections/library/native-son-doc-id/book json:='
 { "title": "Native Daughter" }'
+```
 
 Check the results:
 ```
@@ -310,8 +312,15 @@ http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id/bo
 ```
 
 Check the results:
+
 ```
 http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
+```
+
+And delete the collection:
+
+```
+http DELETE :/rest/v2/namespaces/library/collections/library
 ```
 
 Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.
