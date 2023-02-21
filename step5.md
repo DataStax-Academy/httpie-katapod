@@ -231,7 +231,7 @@ http PUT :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
 Get that document to make sure the changes happened:
 
 ```
-http :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+http :/rest/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 A 'PATCH' request using a document-id will replace the targeted data in a JSON object contained in the document. JSON objects are delimited by { } in the data. If you have an array, delimited by '[ ]' in the JSON object targeted, or a scalar value, the values will be overwritten.
