@@ -25,7 +25,7 @@
 ✅ Create an application token with the *Database Administrator* role to access Astra DB. Skip this step if you already have a token.
 
 <ul>
-  <li>Sign in (or sign up) to your Astra account at <a href="https://astra.datastax.com" target="_blank">astra.datastax.com</a></li>
+  <li>Sign in (or sign up) to your Astra account at <a href="[https://astra.datastax.com](https://astra.datastax.com?utm_source=awesome-astra&utm_medium=social_organic&utm_campaign=httpie-katapod&utm_term=all-plays&utm_content=register">astra.datastax.com</a></li>
   <li>Create an application token with the <i>Database Administrator</i> role by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a></li>
 </ul>
 
