@@ -45,6 +45,14 @@ Try the simpler call to make sure it works:
 http :/rest/v1/keyspaces
 ```
 
+<details><summary>Show me the CQL</summary>
+  
+```
+astra db cqlsh workshops -k library -e "desc keyspaces;"
+```
+  
+</details>
+
 Great, it's time to dive deeper into the Stargate APIs to see what they can do for you.
 
 <!-- NAVIGATION -->
