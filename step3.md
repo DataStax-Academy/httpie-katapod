@@ -104,7 +104,7 @@ http :/rest/v2/schemas/keyspaces/library/tables/users
 ```
 	
 
-<details><summary>Show me the CQL for this command</summary
+<details><summary>Show me the CQL for this command</summary>
 	
 ```
 astra db cqlsh workshops -k library -e "desc users;"
