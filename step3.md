@@ -102,6 +102,15 @@ or specify the table you want:
 ```
 http :/rest/v2/schemas/keyspaces/library/tables/users
 ```
+	
+
+<details><summary>Show me the CQL for this command</summary
+	
+```
+astra db cqlsh workshops -k library -e "desc users;"
+```
+
+</details>
 
 ## 2. Add some rows
 
@@ -130,6 +139,15 @@ Check to make sure they're really in there:
 ```
 http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
+	
+	
+<details><summary>Show me the CQL</summary>
+	
+```
+astra db cqlsh workshops -k library -e "select * from users where firstname IN ('Mookie', 'Janesha');"
+```
+
+</details>
 
 ## 3. Update the rows
 
@@ -143,6 +161,14 @@ Check our work:
 http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
 
+<details><summary>Show me the CQL</summary>
+	
+```
+astra db cqlsh workshops -k library -e "select * from users where firstname IN ('Mookie', 'Janesha');"
+```
+
+</details>
+	
 ## 4. Delete the rows
 
 Janesha has moved away.  Let's remove them from the database.
