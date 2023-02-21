@@ -272,13 +272,13 @@ http :/rest/v2/namespaces/library/collections/library/long-ID-number
 It is also possible to update only part of a document. Using a PUT request, you can replace current data in a document. To partially update, send a PUT request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example will change the book title from Native Son to Native Daughter:
 
 ```
-http PUT :/rest/v2/namespaces/test/collections/library/native-son-doc-id/book json:='
+http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id/book json:='
 { "title": "Native Daughter" }'
 ```
 
 Check the results:
 ```
-http :/rest/v2/namespaces/test/collections/library/native-son-doc-id
+http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
 ```
 
 Using a PATCH request, you can overwrite current data in a document. To partially update, send a PATCH request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example overwrites a book’s information:
