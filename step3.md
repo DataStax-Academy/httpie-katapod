@@ -31,7 +31,17 @@ http :/rest/v2/schemas/keyspaces
 
 ```
 
-Do you see 'library' in there? Great, we're ready to move on. You could also check for a specific keyspace:
+Do you see 'library' in there? Great, we're ready to move on. 
+
+<details><summary>Show me the CQL for this command</summary
+	
+```
+astra db cqlsh workshops -k library -e "desc keyspaces;"
+```
+
+</details>
+
+You could also check for a specific keyspace:
 
 
 ```
@@ -79,6 +89,14 @@ Just to be sure, go ahead and ask for a listing of the tables in the library key
 ```
 http :/rest/v2/schemas/keyspaces/library/tables
 ```
+
+<details><summary>Show me the CQL for this command</summary
+	
+```
+astra db cqlsh workshops -k library -e "desc tables;"
+```
+
+</details>
 
 or specify the table you want:
 ```
