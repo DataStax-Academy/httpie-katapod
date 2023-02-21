@@ -90,7 +90,7 @@ Just to be sure, go ahead and ask for a listing of the tables in the library key
 http :/rest/v2/schemas/keyspaces/library/tables
 ```
 
-<details><summary>Show me the CQL for this command</summary
+<details><summary>Show me the CQL for this command</summary>
 	
 ```
 astra db cqlsh workshops -k library -e "desc tables;"
