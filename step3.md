@@ -33,12 +33,12 @@ http :/rest/v2/schemas/keyspaces
 
 Do you see 'library' in there? Great, we're ready to move on. 
 
-<details><summary>Show me the CQL for this command</summary
-	
+<details><summary>Show me the CQL</summary>
+  
 ```
 astra db cqlsh workshops -k library -e "desc keyspaces;"
 ```
-
+  
 </details>
 
 You could also check for a specific keyspace:
