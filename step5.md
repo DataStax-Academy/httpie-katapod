@@ -284,7 +284,7 @@ http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
 Using a PATCH request, you can overwrite current data in a document. To partially update, send a PATCH request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example overwrites a book’s information:
 
 ```
-http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id/book json:='
+http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id json:='
 {
   "book": {
     "title": "Native Daughter",
