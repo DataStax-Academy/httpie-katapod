@@ -205,13 +205,13 @@ Fields
 By default you get all of the fields.  Using the fields parameter allows you to select which parts of the data you want to receive.
 
 ```
-http :/rest/v2/namespaces/library/collections/library/native-son-doc-id?fields:='["book.title","book.genre"]'
+http :/rest/v2/namespaces/library/collections/library/native-son-doc-id?fields='["book.title","book.genre"]'
 ```
 
 *Search collection for documents with a simple WHERE clause*
 
 ```
-http :/rest/v2/namespaces/library/collections/library?where:='{"reader.name":{"$eq":"Amy%20Smith"}}'
+http :/rest/v2/namespaces/library/collections/library?where='{"reader.name":{"$eq":"Amy%20Smith"}}'
 ```
 
 If you want more details, check out the [Stargate Documentation](https://stargate.io/docs/latest/develop/dev-with-doc.html#search-collections-for-documents-with-operators-eq-ne-or-and-not-gt-gte-lt-lte-in-nin) for the Document API
