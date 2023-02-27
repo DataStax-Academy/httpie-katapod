@@ -9,7 +9,7 @@
 
 # Exploring Stargate APIs from the command line - REST
 
-In this section you will use our httpie configuration to take a look at the Stargate APIs. In this section we will use the REST API
+In this section you will use our httpie configuration to take a look at the Stargate REST API. 
 
 - REST - Create a Table
 - REST - Add some rows
@@ -19,7 +19,7 @@ In this section you will use our httpie configuration to take a look at the Star
 
 ### 1. Create a table
 
-The first thing that needs to happen is to create a table. HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
+The first thing that needs to happen is to create a table. HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "library" keyspace.
 
 Here are the steps:
 
