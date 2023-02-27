@@ -1,5 +1,5 @@
 image:
-  gitpod/workspace-full
+  .gitpod.Dockerfile
 tasks:
   - name: install-dependencies
     before: |
