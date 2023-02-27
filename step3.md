@@ -28,7 +28,6 @@ Here are the steps:
 
 ```
 http :/rest/v2/schemas/keyspaces
-
 ```
 
 Do you see 'library' in there? Great, we're ready to move on. 
