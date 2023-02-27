@@ -7,6 +7,7 @@
   </div>
 </div>
 
+
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
  <a href='command:katapod.loadPage?[{"step":"intro"}]' 
