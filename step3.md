@@ -17,7 +17,7 @@ In this section you will use our httpie configuration to take a look at the Star
 - REST - Delete the rows
 - REST - Delete the table
 
-### 1. Create a table
+## 1. Create a table
 
 The first thing that needs to happen is to create a table. HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "library" keyspace.
 
