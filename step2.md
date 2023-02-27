@@ -25,7 +25,7 @@ astra db create-dotenv -k library workshops
 Now let's copy those credentials to our environment
 
 ```
-echo "[default]" > ~/.astrarc
+echo "[workshops]" >> ~/.astrarc
 cat .env | tr -d \" >> ~/.astrarc
 ```
 
@@ -34,7 +34,7 @@ cat .env | tr -d \" >> ~/.astrarc
 Make a call to the API using httpie to make sure your credentials are working:
 
 ```
-http --auth-type astra -a default: :/rest/v1/keyspaces
+http --auth-type astra -a workshops: :/rest/v1/keyspaces
 ```
 
 We've actually got an httpie config file so we can skip the auth-type stuff.
