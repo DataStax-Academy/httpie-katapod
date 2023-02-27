@@ -7,7 +7,21 @@
   </div>
 </div>
 
-# Exploring Stargate APIs from the command line - Document API
+
+<!-- NAVIGATION -->
+<div id="navigation-top" class="navigation-top">
+ <a href='command:katapod.loadPage?[{"step":"step4"}]' 
+   class="btn btn-dark navigation-top-left">⬅️ Back
+ </a>
+<span class="step-count"> Step 1 of 5</span>
+ <a href='command:katapod.loadPage?[{"step":"finish"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
+</div>
+
+<!-- CONTENT -->
+
+<div class="step-title">Exploring Stargate APIs from the command line - Document API</div>
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the Document API.  This API deserves a little more explanation, as it is not what you might think of as a standard Cassandra database.  In this API, you give the database JSON objects and can then work with them based on their contents.  This database model doesn't require a schema, it just has the documents you put in there, which are placed in collections that you define.
 
