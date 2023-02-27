@@ -11,7 +11,6 @@ RUN curl -L https://deb.nodesource.com/setup_16.x | bash \
     && apt-get update -yq \
 	&& apt-get install nodejs
 RUN npm install -g astra-setup netlify-cli axios
-RUN curl -Ls "https://dtsx.io/get-astra-cli" | bash 
       
 
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
