@@ -7,7 +7,21 @@
   </div>
 </div>
 
-# Exploring Stargate APIs from the command line - REST
+
+<!-- NAVIGATION -->
+<div id="navigation-top" class="navigation-top">
+ <a href='command:katapod.loadPage?[{"step":"step2"}]' 
+   class="btn btn-dark navigation-top-left">⬅️ Back
+ </a>
+<span class="step-count"> Step 1 of 5</span>
+ <a href='command:katapod.loadPage?[{"step":"step4"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
+</div>
+
+<!-- CONTENT -->
+
+<div class="step-title">Exploring Stargate APIs from the command line - REST</div>
 
 In this section you will use our httpie configuration to take a look at the Stargate REST API. 
 
