@@ -16,7 +16,7 @@ RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/
 
 RUN git clone https://github.com/stargate/stargate
 RUN cd stargate/docker-compose/cassandra-4.0
-RUN docker compose up -d
+#RUN docker compose up -d
 
 USER gitpod
 RUN pip3 install httpie-astra==0.1.3
