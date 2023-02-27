@@ -151,7 +151,7 @@ astra db cqlsh workshops -k library -e "select * from users where firstname IN (
 ## 3. Update the rows
 
 ```
-http PUT :/rest/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuschia"}'
+http PUT :/rest/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuchsia"}'
 ```
 
 Check our work:
