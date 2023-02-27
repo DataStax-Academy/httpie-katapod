@@ -7,7 +7,21 @@
   </div>
 </div>
 
-# Exploring Stargate APIs from the command line - GraphQL (CQL First)
+
+<!-- NAVIGATION -->
+<div id="navigation-top" class="navigation-top">
+ <a href='command:katapod.loadPage?[{"step":"step3"}]' 
+   class="btn btn-dark navigation-top-left">⬅️ Back
+ </a>
+<span class="step-count"> Step 1 of 5</span>
+ <a href='command:katapod.loadPage?[{"step":"step5"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
+</div>
+
+<!-- CONTENT -->
+
+<div class="step-title">Exploring Stargate APIs from the command line - GraphQL (CQL First)</div>
 
 In this section you will use our httpie configuration to take a look at the Stargate APIs.  In this section we will use the GraphQL API
 
