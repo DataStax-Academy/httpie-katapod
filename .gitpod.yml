@@ -1,6 +1,5 @@
 image:
   Dockerfile
-
 tasks:
   - name: install-dependencies
     before: |
