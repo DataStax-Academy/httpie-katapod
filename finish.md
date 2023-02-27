@@ -1,16 +1,16 @@
-
 <!-- TOP -->
 <div class="top">
   <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
   <div class="scenario-title-section">
-    <span class="scenario-title">Multi Terminal Scenario</span>
-    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:aleksandr.volochnev@datastax.com">email</a> or <a href="https://dtsx.io/aleks">LinkedIn</a>.</span>
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
   </div>
 </div>
 
+
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
- <a href='command:katapod.loadPage?[{"step":"step2"}]'
+ <a href='command:katapod.loadPage?[{"step":"step5"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
 </div>
@@ -26,7 +26,8 @@
         <div class="scenario-objectives">In this hands-on lab, you learned:</div>
         <ul>
               <li><span class="scenario-objective">Connect your workspace to the Astra Database</span></li>
-              <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>       </ul>
+              <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>       
+        </ul>
       </div>
      </div>
     </div>
