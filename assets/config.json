@@ -2,6 +2,6 @@
     "default_options": [
       "--style=fruity",
       "--auth-type=astra",
-      "--auth=default:"
+      "--auth=workshops:"
     ]
 }
