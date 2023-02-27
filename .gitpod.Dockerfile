@@ -15,7 +15,6 @@ RUN npm install -g astra-setup netlify-cli axios
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
 RUN git clone https://github.com/stargate/stargate
-RUN cd /home/gitpod/stargate/docker-compose/cassandra-4.0; docker compose up -d
 
 USER gitpod
 RUN pip3 install httpie-astra==0.1.3
