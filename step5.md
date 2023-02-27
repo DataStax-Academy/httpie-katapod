@@ -17,7 +17,7 @@ In this section you will use our httpie configuration to take a look at the Star
 * Document - Update documents
 * Document - Delete document
 
-### 1. Create a collection
+## 1. Create a collection
 
 You'll need a collection to hold your documents.  This is separate from the database name (we're using workshops) or namespace (in this case, library) that contains it.  If you don't create the collection, it will automatically be created for you when you insert your first document.
 
@@ -179,7 +179,7 @@ http PUT :/rest/v2/namespaces/library/collections/library/John-Smith query:='   
 '
 ```
 
-### 3. Read Documents
+## 3. Read Documents
 
 You can either search in collections for documents, or you can search within documents.
 
@@ -198,11 +198,9 @@ Paging Size - The page-size parameter has a default value of 3 and a maximum val
 http :/rest/v2/namespaces/library/collections/library?page-size=1
 ```
 
-Page State
-When there are more documents than the page-size, the API will return a pageState.  This value can be used to get the next "batch" of documents.  Note, you receive it as pageState but it must be sent as page-state
+Page State: When there are more documents than the page-size, the API will return a pageState.  This value can be used to get the next "batch" of documents.  Note, you receive it as pageState but it must be sent as page-state
 
-Fields
-By default you get all of the fields.  Using the fields parameter allows you to select which parts of the data you want to receive.
+Fields: By default you get all of the fields.  Using the fields parameter allows you to select which parts of the data you want to receive.
 
 ```
 http :/rest/v2/namespaces/library/collections/library/native-son-doc-id?fields='["book.title","book.genre"]'
@@ -216,7 +214,7 @@ http :/rest/v2/namespaces/library/collections/library?where='{"reader.name":{"$e
 
 If you want more details, check out the [Stargate Documentation](https://stargate.io/docs/latest/develop/dev-with-doc.html#search-collections-for-documents-with-operators-eq-ne-or-and-not-gt-gte-lt-lte-in-nin) for the Document API
 
-4. Update Documents
+## 4. Update Documents
 
 The easiest way to update a document is to use PUT to replace it:
 
