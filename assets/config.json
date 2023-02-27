@@ -1,6 +1,6 @@
 {
     "default_options": [
-      "--style=fruity",
+      "--style=borland",
       "--auth-type=astra",
       "--auth=workshops:"
     ]
