@@ -51,7 +51,6 @@ http :/rest/v2/schemas/keyspaces/library
 
 
 ```
-
 http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
 	"name": "users",
 	"columnDefinitions":
