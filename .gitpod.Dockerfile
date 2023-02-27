@@ -12,10 +12,7 @@ RUN curl -L https://deb.nodesource.com/setup_16.x | bash \
 	&& apt-get install nodejs
 RUN npm install -g astra-setup netlify-cli axios
       
-
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-RUN chmod 777 /usr/lib/node_modules/astra-setup/node_modules/node-jq/bin/jq
-RUN chown -R gitpod:gitpod /workspace
 
 RUN git clone https://github.com/stargate/stargate/tree/main/docker-compose/cassandra-4.0
 RUN chdir stargate/tree/main/docker-compose/cassandra-4.0
