@@ -56,7 +56,7 @@ http --session=stargate http://localhost:8082/v2/schemas/keyspaces  X-Cassandra-
 
 ✅ Create database keyspace `library`:
 ```
-http POST http://localhost:8082/v2/schemas/keyspaces name=users_keyspace
+http POST http://localhost:8082/v2/schemas/keyspaces name=library
 ```
 
 
