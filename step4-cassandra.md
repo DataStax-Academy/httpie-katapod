@@ -228,7 +228,7 @@ The easiest way to update a document is to use PUT to replace it:
 echo -n '{
   "stuff": "long-ID-number",
   "other": "Changed information in the doc."
-}' | http PUT localhost:8180/v2/namespaces/library/collections/library/long-ID-number json:=
+}' | http PUT localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 Get that document to make sure the changes happened:
@@ -240,7 +240,8 @@ http localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 A 'PATCH' request using a document-id will replace the targeted data in a JSON object contained in the document. JSON objects are delimited by { } in the data. If you have an array, delimited by '[ ]' in the JSON object targeted, or a scalar value, the values will be overwritten.
 
 ```
-http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number newfield="Hope I kept my existing fields!"
+http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number\
+newfield="Hope I kept my existing fields!"
 ```
 
 Check out the results:
