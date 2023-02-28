@@ -68,26 +68,10 @@ mutation createTables {
       { name: "author", type: {basic: TEXT} }
     ]
   )
-  reader: createTable(
-    keyspaceName:"library",
-    tableName:"reader",
-    partitionKeys: [
-      { name: "name", type: {basic: TEXT} }
-    ]
-    clusteringKeys: [ 
-      { name: "user_id", type: {basic: UUID}, order: "ASC" }
-  	]
-    values: [
-      { name: "birthdate", type: {basic: DATE} }
-      { name: "email", type: {basic: SET, info:{ subTypes: [ { basic: TEXT } ] } } }
-      { name: "reviews", type: {basic: TUPLE, info: { subTypes: [ { basic: TEXT }, { basic: INT }, { basic: DATE } ] } } }
-      { name: "addresses", type: { basic: LIST, info: { subTypes: [ { basic: UDT, info: { name: "address_type", frozen: true } } ] } } }
-    ]
-  )
 }'
 ```
 
-Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace:
+Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace and make sure there's a book.
 
 ```
 http :/rest/v2/schemas/keyspaces/library/tables
