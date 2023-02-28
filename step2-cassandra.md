@@ -86,7 +86,7 @@ echo -n '{
 	    "clusteringExpression":
 	      [{ "column": "lastname", "order": "ASC" }]
 	  }
-} | http POST localhost:8082/v2/schemas/keyspaces/library/tables
+}' | http POST localhost:8082/v2/schemas/keyspaces/library/tables
 ```
 
 Just to be sure, go ahead and ask for a listing of the tables in the library keyspace:
@@ -119,7 +119,7 @@ echo -n '
     "firstname": "Janesha",
     "lastname": "Doesha",
     "favorite color": "grey"
-} | http POST localhost:8082/v2/keyspaces/library/users '
+}' | http POST localhost:8082/v2/keyspaces/library/users
 ```
 
 Check to make sure they're really in there:
