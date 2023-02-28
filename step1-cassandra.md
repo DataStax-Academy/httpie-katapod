@@ -51,6 +51,8 @@ export AUTH_TOKEN=`curl -L -X POST 'http://localhost:8081/v1/auth' \
     "password": "cassandra"
 }'| cut -f4 -d'"'`
 http --session=stargate http://localhost:8082/v2/schemas/keyspaces  X-Cassandra-Token:$AUTH_TOKEN
+ln -s ~/.config/httpie/sessions/localhost_8082 ~/.config/httpie/sessions/localhost_8080
+ln -s ~/.config/httpie/sessions/localhost_8082 ~/.config/httpie/sessions/localhost_8081
 ```
 
 ✅ Create database keyspace `library`:
