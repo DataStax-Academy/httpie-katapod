@@ -14,7 +14,7 @@
  <a href='command:katapod.loadPage?[{"step":"intro"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 1 of 5</span>
+<span class="step-count"> Step 1 of 4</span>
  <a href='command:katapod.loadPage?[{"step":"step2-cassandra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
@@ -41,7 +41,7 @@ cp /workspace/httpie-katapod/assets/config-cassandra.json ~/.config/httpie/confi
 Again, please be patient.
 
 ## ✅ Create/Refresh your Token
-Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.
+Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.  Sometimes the servers can take a moment to fully come online, if you get an error when creating the token just click again to get a new one.
 
 ```
 export AUTH_TOKEN=`curl -L -X POST 'http://localhost:8081/v1/auth' \
