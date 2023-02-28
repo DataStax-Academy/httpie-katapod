@@ -39,6 +39,7 @@ Now let's copy those credentials to our environment
 ```
 echo "[workshops]" >> ~/.astrarc
 cat .env | tr -d \" >> ~/.astrarc
+cp assets/config.astra.json ~/.config/httpie/config.json
 ```
 
 ## 2. Verify Credentials
