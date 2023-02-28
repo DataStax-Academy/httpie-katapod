@@ -10,7 +10,6 @@ tasks:
       mkdir -p $HOME/.config/httpie
       cp assets/config.json $HOME/.config/httpie
       pip3 install httpie-astra==0.1.3
-      cd /home/gitpod/stargate/docker-compose/cassandra-4.0; docker compose up -d
 github:
   prebuilds:
     main: true
