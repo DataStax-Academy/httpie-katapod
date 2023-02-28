@@ -42,6 +42,7 @@ Again, please be patient.
 
 ✅ Create an application token with the *Database Administrator* role to access Astra DB. Skip this step if you already have a token.
 
+## Create/Refresh your Token
 Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.
 
 ```
@@ -64,10 +65,10 @@ If the command fails, please revisit the previous steps to make sure that the da
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step0-cassandra"}]'
-   class="btn btn-dark navigation-bottom-left">⬅️ Back - Astra Overview
+ <a href='command:katapod.loadPage?[{"step":"intro"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Intro
  </a>
  <a href='command:katapod.loadPage?[{"step":"step2-cassandra"}]'
-    class="btn btn-dark navigation-bottom-right">Next ➡️ Set up workspace credentials
+    class="btn btn-dark navigation-bottom-right">Next ➡️ REST API
   </a>
 </div>
