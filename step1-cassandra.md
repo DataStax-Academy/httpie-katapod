@@ -35,6 +35,7 @@ This command can take a few minutes, please be patient.  It is:
 git clone https://github.com/stargate/stargate
 cd stargate/docker-compose/cassandra-4.0
 ./start_cass_40_dev_mode.sh
+cp /workspace/httpie-katapod/assets/config-cassandra.json ~/.config/httpie/config.json
 ```
 
 Again, please be patient.
