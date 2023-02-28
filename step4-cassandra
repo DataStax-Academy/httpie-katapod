@@ -36,13 +36,13 @@ In this section you will use our httpie configuration to take a look at the Star
 You'll need a collection to hold your documents.  This is separate from the database name (we're using workshops) or namespace (in this case, library) that contains it.  If you don't create the collection, it will automatically be created for you when you insert your first document.
 
 ```
-http POST :/rest/v2/namespaces/library/collections json:='{"name":"library"}'
+http POST localhost:8180/v2/namespaces/library/collections name=library
 ```
 
 Check to make sure that it got created:
 
 ```
-http :/rest/v2/namespaces/library/collections
+http localhost:8180/v2/namespaces/library/collections
 ```
 
 ## 2. Write a document
@@ -50,28 +50,20 @@ http :/rest/v2/namespaces/library/collections
 Create a document without specifying the ID 
 
 ```
-http POST :/rest/v2/namespaces/library/collections/library json:='
-{
-  "stuff": "Random ramblings",
-  "other": "I do not care much about the ID for this document."
-}'
+http POST localhost:8180/v2/namespaces/library/collections/library stuff="Random ramblings" other="I do not care much about the ID for this document."
 ```
 
 Create a document with a specific ID:
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
-{
-  "stuff": "long-ID-number",
-  "other": "I need a document with a set value for a test."
-}'
+http PUT localhost:8180/v2/namespaces/library/collections/library/long-ID-number \
+ID="long-ID-number" other="I need a document with a set value for a test."
 ```
 
 Add a document with data:
 
 ```
-http POST :/rest/v2/namespaces/library/collections/library json:='
-{
+echo -n '{
     "reader": {
        "name": "Amy Smith",
        "user_id": "12345",
@@ -109,7 +101,7 @@ http POST :/rest/v2/namespaces/library/collections/library json:='
            }
        ]
     }
-}'
+}' | http POST localhost:8180/v2/namespaces/library/collections/library
 ```
 
 Note the difference between using POST and PUT. The POST request is used to insert new documents when you want the system to auto-generate the document-dd. The PUT request is used to insert a new document when you want to specify the document-id.
@@ -117,7 +109,7 @@ Note the difference between using POST and PUT. The POST request is used to inse
 Here's a document we'll use in later examples, PUT with a specific ID.
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id json:='
+echo -n '
      {
         "book": {
             "title": "Native Son",
@@ -142,11 +134,8 @@ http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id json
             ]
         }
     }
-'
+' | http PUT localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id
 ```
-
-
-
 
 Add a reader document with a specific document ID:
 
