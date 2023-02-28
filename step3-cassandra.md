@@ -31,26 +31,6 @@ In this section you will use our httpie configuration to take a look at the Star
 * GraphQL - Delete the rows
 * GraphQL - Delete the table
 
-### 0. Create a UDT (User Defined Type)
-
-Cassandra provides User Defined Types for you to keep your data organized more efficiently and tidy up your table definitions.
-
-```
-http POST http://localhost:8080/graphql-schema query='
-mutation createAddressUDT {
-  createType(
-    keyspaceName: "library"
-    typeName: "address_type"
-    fields: [
-      { name: "street", type: { basic: TEXT } }
-      { name: "city", type: { basic: TEXT } }
-      { name: "state", type: { basic: TEXT } }
-      { name: "zip", type: { basic: TEXT } }
-    ]
-  )
-}'
-```
-
 ### 1. Create a table
 
 The first thing that needs to happen is to create a table.  HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "Workshop" keyspace.
@@ -74,7 +54,7 @@ mutation createTables {
 Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace and make sure there's a book.
 
 ```
-http :/rest/v2/schemas/keyspaces/library/tables
+http localhost:8082/rest/v2/schemas/keyspaces/library/tables
 ```
 
 If you need to add more attributes to something you are storing in a table, you can add one or more columns:
@@ -139,32 +119,6 @@ mutation insert2Books {
 ```
 
 
-Using a UDT requires that you be very specific about your terms.
-
-```
-http POST localhost:8080/graphql/library query='
-mutation insertReaderWithUDT{
-  ag: insertreader(
-    value: {
-      user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64"
-      name: "Allen Ginsberg"
-      birthdate: "1926-06-03"
-      addresses: [{ street: "Haight St", city: "San Francisco", zip: "94016" }]
-    }
-  ) {
-    value {
-      user_id
-      name
-      birthdate
-      addresses {
-        street
-        city
-        zip
-      }
-    }
-  }
- }'
- ```
 
 ## 3. Retrieve the rows
 
