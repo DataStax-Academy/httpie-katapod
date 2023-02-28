@@ -131,7 +131,7 @@ http localhost:8082/v2/keyspaces/library/users where=='{"firstname":{"$in":["Moo
 ## 3. Update the rows
 
 ```
-http PUT localhost:8082/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuchsia"}'
+http PUT localhost:8082/v2/keyspaces/library/users/Janesha/Doesha "favorite color"=Fuchsia
 ```
 
 Check our work:
