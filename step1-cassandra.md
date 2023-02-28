@@ -1,1 +1,72 @@
 
+<!-- TOP -->
+<div class="top">
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <div class="scenario-title-section">
+    <span class="scenario-title">Exploring Stargate with HTTPie</span>
+    <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
+  </div>
+</div>
+
+
+<!-- NAVIGATION -->
+<div id="navigation-top" class="navigation-top">
+ <a href='command:katapod.loadPage?[{"step":"intro"}]' 
+   class="btn btn-dark navigation-top-left">⬅️ Back
+ </a>
+<span class="step-count"> Step 1 of 5</span>
+ <a href='command:katapod.loadPage?[{"step":"step2"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
+</div>
+
+<!-- CONTENT -->
+
+<div class="step-title">Start the Cassandra/Stargate Cluster</div>
+
+✅ Start up the Cassandra cluster
+
+This command can take a few minutes, please be patient.  It is:
+* Starting a Cassandra Coordinator
+* Starting up 3 Cassandra Nodes
+* Starting Stargate nodes
+
+```
+git clone https://github.com/stargate/stargate
+cd stargate/docker-compose/cassandra-4.0
+./start_cass_40_dev_mode.sh
+```
+
+Again, please be patient.
+
+✅ Create an application token with the *Database Administrator* role to access Astra DB. Skip this step if you already have a token.
+
+Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.
+
+```
+export AUTH_TOKEN=`curl -L -X POST 'http://localhost:8081/v1/auth' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{
+    "username": "cassandra",
+    "password": "cassandra"
+}'| cut -f4 -d'"'`
+http --session=stargate http://localhost:8082/v2/schemas/keyspaces  X-Cassandra-Token:$AUTH_TOKEN
+```
+
+✅ Create database keyspace `library`:
+```
+http POST http://localhost:8082/v2/schemas/keyspaces name=users_keyspace
+```
+
+
+If the command fails, please revisit the previous steps to make sure that the database exists and is `ACTIVE`, and retry connecting to the database again.
+
+<!-- NAVIGATION -->
+<div id="navigation-bottom" class="navigation-bottom">
+ <a href='command:katapod.loadPage?[{"step":"step0-cassandra"}]'
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Astra Overview
+ </a>
+ <a href='command:katapod.loadPage?[{"step":"step2-cassandra"}]'
+    class="btn btn-dark navigation-bottom-right">Next ➡️ Set up workspace credentials
+  </a>
+</div>
