@@ -58,7 +58,7 @@ http http://localhost:8082/v2/schemas/keyspaces/library
 
 
 ```
-http POST localhost:8082/v2/schemas/keyspaces/library/tables json:='{
+echo -n '{
 	"name": "users",
 	"columnDefinitions":
 	  [
@@ -86,7 +86,7 @@ http POST localhost:8082/v2/schemas/keyspaces/library/tables json:='{
 	    "clusteringExpression":
 	      [{ "column": "lastname", "order": "ASC" }]
 	  }
-}'
+} | http POST localhost:8082/v2/schemas/keyspaces/library/tables
 ```
 
 Just to be sure, go ahead and ask for a listing of the tables in the library keyspace:
@@ -105,21 +105,21 @@ http localhost:8082/v2/schemas/keyspaces/library/tables/users
 Great! The table is created. But it's kind of dull with no data. Go ahead and add a couple different rows with that data.
 
 ```
-http POST localhost:8082/v2/keyspaces/library/users json:='
+echo -n '
 {
     "firstname": "Mookie",
     "lastname": "Betts",
     "favorite color": "blue"
-}'
+}' | http POST localhost:8082/v2/keyspaces/library/users
 ```
 
 ```
-http POST localhost:8082/v2/keyspaces/library/users json:='
+echo -n '
 {
     "firstname": "Janesha",
     "lastname": "Doesha",
     "favorite color": "grey"
-}'
+} | http POST localhost:8082/v2/keyspaces/library/users '
 ```
 
 Check to make sure they're really in there:
