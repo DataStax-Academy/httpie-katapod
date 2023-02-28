@@ -40,9 +40,7 @@ cp /workspace/httpie-katapod/assets/config-cassandra.json ~/.config/httpie/confi
 
 Again, please be patient.
 
-✅ Create an application token with the *Database Administrator* role to access Astra DB. Skip this step if you already have a token.
-
-## Create/Refresh your Token
+## ✅ Create/Refresh your Token
 Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.
 
 ```
@@ -59,9 +57,6 @@ http --session=stargate http://localhost:8082/v2/schemas/keyspaces  X-Cassandra-
 ```
 http POST http://localhost:8082/v2/schemas/keyspaces name=library
 ```
-
-
-If the command fails, please revisit the previous steps to make sure that the database exists and is `ACTIVE`, and retry connecting to the database again.
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
