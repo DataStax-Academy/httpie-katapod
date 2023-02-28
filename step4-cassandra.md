@@ -13,7 +13,7 @@
  <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 5 of 5</span>
+<span class="step-count"> Step 4 of 4</span>
  <a href='command:katapod.loadPage?[{"step":"finish"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
@@ -326,7 +326,7 @@ http DELETE :/rest/v2/namespaces/library/collections/library
 Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.
 
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step4-astra"}]'
+ <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - GraphQL API
  </a>
   <a href='command:katapod.loadPage?[{"step":"finish"}]'
