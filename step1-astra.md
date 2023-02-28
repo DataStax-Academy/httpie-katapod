@@ -51,10 +51,10 @@ If the command fails, please revisit the previous steps to make sure that the da
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step0"}]'
+ <a href='command:katapod.loadPage?[{"step":"intro"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Astra Overview
  </a>
- <a href='command:katapod.loadPage?[{"step":"step2"}]'
+ <a href='command:katapod.loadPage?[{"step":"step2-astra"}]'
     class="btn btn-dark navigation-bottom-right">Next ➡️ Set up workspace credentials
   </a>
 </div>
