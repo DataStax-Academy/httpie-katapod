@@ -51,12 +51,6 @@ mutation createTables {
 }'
 ```
 
-Just to be sure, go ahead and ask for a listing of the tables in the Workshop keyspace and make sure there's a book.
-
-```
-http localhost:8082/rest/v2/schemas/keyspaces/library/tables
-```
-
 If you need to add more attributes to something you are storing in a table, you can add one or more columns:
 ```
 http POST localhost:8080/graphql-schema query='
