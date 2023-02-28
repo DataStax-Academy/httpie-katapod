@@ -145,18 +145,6 @@ query ThreeBooks {
 }'
 ```
 
-## 4. Delete
-
-
-You can delete a table. All data will be deleted along with the table schema. The easiest way is to delete it using the REST API.
-
-```
-http DELETE localhost:8080/rest/v2/schemas/keyspaces/library/tables/reader
-http DELETE localhost:8080/rest/v2/schemas/keyspaces/library/tables/book
-
-```
-
-
 Now you can move on and check out the Document API.
 
 <div id="navigation-bottom" class="navigation-bottom">
