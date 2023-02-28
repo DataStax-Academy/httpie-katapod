@@ -145,26 +145,6 @@ query ThreeBooks {
 }'
 ```
 
-To display the contents of a UDT, notice the inclusion of addresses in the values displayed for this read query:
-
-```
-http POST localhost:8080/graphql/library query='
-query getReaderWithUDT{
-  reader(value: { name:"Allen Ginsberg" user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64" }) {
-    values {
-      name
-      birthdate
-      addresses {
-        street
-        city
-        zip
-      }
-    }
-  }
-}'
-```
-
-
 ## 4. Delete
 
 
