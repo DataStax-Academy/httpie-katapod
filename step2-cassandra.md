@@ -41,31 +41,24 @@ Here are the steps:
 
 
 ```
-http :/rest/v2/schemas/keyspaces
+http http://localhost:8082/v2/schemas/keyspaces
 ```
 
 Do you see 'library' in there? Great, we're ready to move on. 
 
-<details><summary>Show me the CQL</summary>
-  
-```
-astra db cqlsh workshops -k library -e "desc keyspaces;"
-```
-  
-</details>
 
 You could also check for a specific keyspace:
 
 
 ```
-http :/rest/v2/schemas/keyspaces/library
+http http://localhost:8082/v2/schemas/keyspaces/library
 ```
 
 #### B. Create the tables
 
 
 ```
-http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
+http POST localhost:8082/v2/schemas/keyspaces/library/tables json:='{
 	"name": "users",
 	"columnDefinitions":
 	  [
@@ -99,37 +92,20 @@ http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
 Just to be sure, go ahead and ask for a listing of the tables in the library keyspace:
 
 ```
-http :/rest/v2/schemas/keyspaces/library/tables
+http localhost:8082/v2/schemas/keyspaces/library/tables
 ```
-
-<details><summary>Show me the CQL for this command</summary>
-	
-```
-astra db cqlsh workshops -k library -e "desc tables;"
-```
-
-</details>
 
 or specify the table you want:
 ```
-http :/rest/v2/schemas/keyspaces/library/tables/users
+http localhost:8082/v2/schemas/keyspaces/library/tables/users
 ```
-	
-
-<details><summary>Show me the CQL for this command</summary>
-	
-```
-astra db cqlsh workshops -k library -e "desc users;"
-```
-
-</details>
 
 ## 2. Add some rows
 
 Great! The table is created. But it's kind of dull with no data. Go ahead and add a couple different rows with that data.
 
 ```
-http POST :/rest/v2/keyspaces/library/users json:='
+http POST localhost:8082/v2/keyspaces/library/users json:='
 {
     "firstname": "Mookie",
     "lastname": "Betts",
@@ -138,7 +114,7 @@ http POST :/rest/v2/keyspaces/library/users json:='
 ```
 
 ```
-http POST :/rest/v2/keyspaces/library/users json:='
+http POST localhost:8082/v2/keyspaces/library/users json:='
 {
     "firstname": "Janesha",
     "lastname": "Doesha",
@@ -149,50 +125,33 @@ http POST :/rest/v2/keyspaces/library/users json:='
 Check to make sure they're really in there:
 
 ```
-http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
+http localhost:8082/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
-	
-	
-<details><summary>Show me the CQL</summary>
-	
-```
-astra db cqlsh workshops -k library -e "select * from users where firstname IN ('Mookie', 'Janesha');"
-```
-
-</details>
 
 ## 3. Update the rows
 
 ```
-http PUT :/rest/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuchsia"}'
+http PUT localhost:8082/v2/keyspaces/library/users/Janesha/Doesha json:='{ "favorite color": "Fuchsia"}'
 ```
 
 Check our work:
 
 ```
-http :/rest/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
+http localhost:8082/v2/keyspaces/library/users where=='{"firstname":{"$in":["Mookie","Janesha"]}}' -vvv
 ```
 
-<details><summary>Show me the CQL</summary>
-	
-```
-astra db cqlsh workshops -k library -e "select * from users where firstname IN ('Mookie', 'Janesha');"
-```
-
-</details>
-	
 ## 4. Delete the rows
 
 Janesha has moved away.  Let's remove them from the database.
 
 ```
-http DELETE :/rest/v2/keyspaces/library/users/Janesha/Doesha
+http DELETE localhost:8082/v2/keyspaces/library/users/Janesha/Doesha
 ```
 
 So wait, are they gone?
 
 ```
-http :/rest/v2/keyspaces/library/users/Janesha/Doesha
+http localhost:8082/v2/keyspaces/library/users/Janesha/Doesha
 ```
 
 ## 5. Delete the table
@@ -200,13 +159,13 @@ http :/rest/v2/keyspaces/library/users/Janesha/Doesha
 We don't need our table anymore, let's delete it.
 
 ```
-http DELETE :/rest/v2/schemas/keyspaces/library/tables/users
+http DELETE localhost:8082/v2/schemas/keyspaces/library/tables/users
 ```
 
 Double checking - what tables are in my keyspace?
 
 ```
-http :/rest/v2/schemas/keyspaces/library/tables
+http localhost:8082/v2/schemas/keyspaces/library/tables
 ```
 
 Now you can move on and check out the GraphQL API.
