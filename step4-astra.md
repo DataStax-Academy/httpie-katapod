@@ -10,11 +10,11 @@
 
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
- <a href='command:katapod.loadPage?[{"step":"step3"}]' 
+ <a href='command:katapod.loadPage?[{"step":"step3-astra"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
 <span class="step-count"> Step 4 of 5</span>
- <a href='command:katapod.loadPage?[{"step":"step5"}]' 
+ <a href='command:katapod.loadPage?[{"step":"step5-astra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
 </div>
@@ -248,10 +248,10 @@ http DELETE :/rest/v2/schemas/keyspaces/library/tables/book
 Now you can move on and check out the Document API.
 
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step3"}]'
+ <a href='command:katapod.loadPage?[{"step":"step3-astra"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - REST API
  </a>
- <a href='command:katapod.loadPage?[{"step":"step5"}]'
+ <a href='command:katapod.loadPage?[{"step":"step5-astra"}]'
     class="btn btn-dark navigation-bottom-right">Next ➡️ Document API
   </a>
 </div>

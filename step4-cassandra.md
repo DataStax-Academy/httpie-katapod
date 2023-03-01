@@ -14,7 +14,7 @@
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
 <span class="step-count"> Step 4 of 4</span>
- <a href='command:katapod.loadPage?[{"step":"finish"}]' 
+ <a href='command:katapod.loadPage?[{"step":"finish-cassandra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
 </div>
@@ -329,7 +329,7 @@ Fantastic!  We've gone over all three of the API types.  Feel free to visit the 
  <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - GraphQL API
  </a>
-  <a href='command:katapod.loadPage?[{"step":"finish"}]'
+  <a href='command:katapod.loadPage?[{"step":"finish-cassandra"}]'
     class="btn btn-dark navigation-bottom-right">Finish
   </a>
 </div>
