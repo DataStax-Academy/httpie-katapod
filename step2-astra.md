@@ -10,11 +10,11 @@
 
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
- <a href='command:katapod.loadPage?[{"step":"step1"}]' 
+ <a href='command:katapod.loadPage?[{"step":"step1-astra"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
 <span class="step-count"> Step 2 of 5</span>
- <a href='command:katapod.loadPage?[{"step":"step3"}]' 
+ <a href='command:katapod.loadPage?[{"step":"step3-astra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
 </div>
@@ -39,6 +39,7 @@ Now let's copy those credentials to our environment
 ```
 echo "[workshops]" >> ~/.astrarc
 cat .env | tr -d \" >> ~/.astrarc
+cp /workspace/httpie-katapod/assets/config-astra.json ~/.config/httpie/config.json
 ```
 
 ## 2. Verify Credentials
@@ -69,10 +70,10 @@ Great, it's time to dive deeper into the Stargate APIs to see what they can do f
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step1"}]'
+ <a href='command:katapod.loadPage?[{"step":"step1-astra"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Create Astra DB
  </a>
- <a href='command:katapod.loadPage?[{"step":"step3"}]'
+ <a href='command:katapod.loadPage?[{"step":"step3-astra"}]'
     class="btn btn-dark navigation-bottom-right">Next ➡️ REST API
   </a>
 </div>
