@@ -18,6 +18,3 @@ ports:
   - name: stargate
     port: 8000-10000
     onOpen: ignore
-  - name: keycloak
-    port: 4444
-    onOpen: ignore
