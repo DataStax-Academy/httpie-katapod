@@ -13,17 +13,10 @@ tasks:
 github:
   prebuilds:
     main: true
-ports:
-  - port: 8000-10000
-    onOpen: ignore
 vscode:
    extensions:
     - https://github.com/hemidactylus/katapod/releases/download/1.1.0-beta2/katapod-1.1.0-beta2.vsix
-    
 ports:
   - name: stargate
     port: 8000-10000
-    onOpen: ignore
-  - name: keycloak
-    port: 4444
     onOpen: ignore
