@@ -10,11 +10,11 @@
 
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
- <a href='command:katapod.loadPage?[{"step":"step4"}]' 
+ <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 5 of 5</span>
- <a href='command:katapod.loadPage?[{"step":"finish"}]' 
+<span class="step-count"> Step 4 of 4</span>
+ <a href='command:katapod.loadPage?[{"step":"finish-cassandra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
 </div>
@@ -36,13 +36,13 @@ In this section you will use our httpie configuration to take a look at the Star
 You'll need a collection to hold your documents.  This is separate from the database name (we're using workshops) or namespace (in this case, library) that contains it.  If you don't create the collection, it will automatically be created for you when you insert your first document.
 
 ```
-http POST :/rest/v2/namespaces/library/collections json:='{"name":"library"}'
+http POST localhost:8180/v2/namespaces/library/collections name=library
 ```
 
 Check to make sure that it got created:
 
 ```
-http :/rest/v2/namespaces/library/collections
+http localhost:8180/v2/namespaces/library/collections
 ```
 
 ## 2. Write a document
@@ -50,28 +50,21 @@ http :/rest/v2/namespaces/library/collections
 Create a document without specifying the ID 
 
 ```
-http POST :/rest/v2/namespaces/library/collections/library json:='
-{
-  "stuff": "Random ramblings",
-  "other": "I do not care much about the ID for this document."
-}'
+http POST localhost:8180/v2/namespaces/library/collections/library \
+stuff="Random ramblings" other="I do not care much about the ID for this document."
 ```
 
 Create a document with a specific ID:
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
-{
-  "stuff": "long-ID-number",
-  "other": "I need a document with a set value for a test."
-}'
+http PUT localhost:8180/v2/namespaces/library/collections/library/long-ID-number \
+ID="long-ID-number" other="I need a document with a set value for a test."
 ```
 
 Add a document with data:
 
 ```
-http POST :/rest/v2/namespaces/library/collections/library json:='
-{
+echo -n '{
     "reader": {
        "name": "Amy Smith",
        "user_id": "12345",
@@ -109,7 +102,7 @@ http POST :/rest/v2/namespaces/library/collections/library json:='
            }
        ]
     }
-}'
+}' | http POST localhost:8180/v2/namespaces/library/collections/library
 ```
 
 Note the difference between using POST and PUT. The POST request is used to insert new documents when you want the system to auto-generate the document-dd. The PUT request is used to insert a new document when you want to specify the document-id.
@@ -117,7 +110,7 @@ Note the difference between using POST and PUT. The POST request is used to inse
 Here's a document we'll use in later examples, PUT with a specific ID.
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id json:='
+echo -n '
      {
         "book": {
             "title": "Native Son",
@@ -142,16 +135,13 @@ http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id json
             ]
         }
     }
-'
+' | http PUT localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id
 ```
-
-
-
 
 Add a reader document with a specific document ID:
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/John-Smith query:='     {
+echo -n '     {
      "reader": {
         "name": "John Smith",
         "user_id": "12346",
@@ -190,7 +180,7 @@ http PUT :/rest/v2/namespaces/library/collections/library/John-Smith query:='   
         ]
      }
  }
-'
+' | http PUT localhost:8180/v2/namespaces/library/collections/library/John-Smith
 ```
 
 ## 3. Read Documents
@@ -201,7 +191,7 @@ You can either search in collections for documents, or you can search within doc
 This command finds all the documents that exist in a collection.
 
 ```
-http :/rest/v2/namespaces/library/collections/library
+http localhost:8180/v2/namespaces/library/collections/library
 ```
 
 *Decorations for getting documents - paging-size, paging-state, fields*
@@ -209,7 +199,7 @@ http :/rest/v2/namespaces/library/collections/library
 Paging Size - The page-size parameter has a default value of 3 and a maximum value of 20. 
 
 ```
-http :/rest/v2/namespaces/library/collections/library?page-size=1
+http localhost:8180/v2/namespaces/library/collections/library?page-size=1
 ```
 
 Page State: When there are more documents than the page-size, the API will return a pageState.  This value can be used to get the next "batch" of documents.  Note, you receive it as pageState but it must be sent as page-state
@@ -217,13 +207,15 @@ Page State: When there are more documents than the page-size, the API will retur
 Fields: By default you get all of the fields.  Using the fields parameter allows you to select which parts of the data you want to receive.
 
 ```
-http :/rest/v2/namespaces/library/collections/library/native-son-doc-id?fields='["book.title","book.genre"]'
+http localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id?\
+fields='["book.title","book.genre"]'
 ```
 
 *Search collection for documents with a simple WHERE clause*
 
 ```
-http :/rest/v2/namespaces/library/collections/library?where='{"reader.name":{"$eq":"Amy%20Smith"}}'
+http  localhost:8180/v2/namespaces/library/collections/library?\
+where='{"reader.name":{"$eq":"Amy%20Smith"}}'
 ```
 
 If you want more details, check out the [Stargate Documentation](https://stargate.io/docs/latest/develop/dev-with-doc.html#search-collections-for-documents-with-operators-eq-ne-or-and-not-gt-gte-lt-lte-in-nin) for the Document API
@@ -233,38 +225,35 @@ If you want more details, check out the [Stargate Documentation](https://stargat
 The easiest way to update a document is to use PUT to replace it:
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
-{
+echo -n '{
   "stuff": "long-ID-number",
   "other": "Changed information in the doc."
-}'
+}' | http PUT localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 Get that document to make sure the changes happened:
 
 ```
-http :/rest/v2/namespaces/library/collections/library/long-ID-number
+http localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 A 'PATCH' request using a document-id will replace the targeted data in a JSON object contained in the document. JSON objects are delimited by { } in the data. If you have an array, delimited by '[ ]' in the JSON object targeted, or a scalar value, the values will be overwritten.
 
 ```
-http PATCH :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
-{
-  "newfield": "Hope I kept my existing fields!"
-}'
+http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number\
+newfield="Hope I kept my existing fields!"
 ```
 
 Check out the results:
 
 ```
-http :/rest/v2/namespaces/library/collections/library/long-ID-number
+http localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 Another example using an array:
 
 ```
-http PATCH :/rest/v2/namespaces/library/collections/library/long-ID-number json:='
+'
 {
   "yet-another-field": "Hopefully, I did not lose my other two fields!",
   "languages": [
@@ -272,7 +261,7 @@ http PATCH :/rest/v2/namespaces/library/collections/library/long-ID-number json:
      "German",
      "French"
   ]
-}'
+}'| http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number 
 ```
 
 And grab that document again:
@@ -284,8 +273,7 @@ http :/rest/v2/namespaces/library/collections/library/long-ID-number
 It is also possible to update only part of a document. Using a PUT request, you can replace current data in a document. To partially update, send a PUT request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example will replace the book sub-object with just the title of "Native Daughter."
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id/book json:='
-{ "title": "Native Daughter" }'
+http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id/book title="Native Daughter"
 ```
 
 Check the results:
@@ -296,7 +284,7 @@ http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
 Using a PATCH request, you can overwrite current data in a document. To partially update, send a PATCH request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example overwrites a book’s information:
 
 ```
-http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id json:='
+echo -n '
 {
   "book": {
     "title": "Native Daughter",
@@ -320,7 +308,7 @@ http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id js
         "French"
     ]
   }
-}'
+}' | http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id
 ```
 
 Check the results:
@@ -338,10 +326,10 @@ http DELETE :/rest/v2/namespaces/library/collections/library
 Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.
 
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step4"}]'
+ <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back - GraphQL API
  </a>
-  <a href='command:katapod.loadPage?[{"step":"finish"}]'
+  <a href='command:katapod.loadPage?[{"step":"finish-cassandra"}]'
     class="btn btn-dark navigation-bottom-right">Finish
   </a>
 </div>
