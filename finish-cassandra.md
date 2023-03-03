@@ -25,7 +25,7 @@
         <br/>
         <div class="scenario-objectives">In this hands-on lab, you learned:</div>
         <ul>
-              <li><span class="scenario-objective">Connect your workspace to the Astra Database</span></li>
+              <li><span class="scenario-objective">Connect your workspace to a local Cassandra instance</span></li>
               <li><span class="scenario-objective">Explore Stargate APIs using httpie</span></li>       
         </ul>
       </div>
