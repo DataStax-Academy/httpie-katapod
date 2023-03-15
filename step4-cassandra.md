@@ -1,6 +1,6 @@
 <!-- TOP -->
 <div class="top">
-  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-2023.svg" />
   <div class="scenario-title-section">
     <span class="scenario-title">Exploring Stargate with HTTPie</span>
     <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
@@ -253,32 +253,33 @@ http localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 Another example using an array:
 
 ```
-'
-{
-  "yet-another-field": "Hopefully, I did not lose my other two fields!",
-  "languages": [
-     "English",
-     "German",
-     "French"
-  ]
-}'| http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number 
+echo -n '
+ {
+   "yet-another-field": "Hopefully, I did not lose my other two fields!",
+   "languages": [
+      "English",
+      "German",
+      "French"
+   ]
+ }'| http PATCH localhost:8180/v2/namespaces/library/collections/library/long-ID-number 
+
 ```
 
 And grab that document again:
 
 ```
-http :/rest/v2/namespaces/library/collections/library/long-ID-number
+http localhost:8180/v2/namespaces/library/collections/library/long-ID-number
 ```
 
 It is also possible to update only part of a document. Using a PUT request, you can replace current data in a document. To partially update, send a PUT request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example will replace the book sub-object with just the title of "Native Daughter."
 
 ```
-http PUT :/rest/v2/namespaces/library/collections/library/native-son-doc-id/book title="Native Daughter"
+http PUT localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id/book title="Native Daughter"
 ```
 
 Check the results:
 ```
-http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
+http localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id
 ```
 
 Using a PATCH request, you can overwrite current data in a document. To partially update, send a PATCH request to /v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}. This example overwrites a book’s information:
@@ -308,19 +309,19 @@ echo -n '
         "French"
     ]
   }
-}' | http PATCH :/rest/v2/namespaces/library/collections/library/native-son-doc-id
+}' | http PATCH localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id
 ```
 
 Check the results:
 
 ```
-http :/rest/v2/namespaces/library/collections/library/native-son-doc-id
+http localhost:8180/v2/namespaces/library/collections/library/native-son-doc-id
 ```
 
 And delete the collection:
 
 ```
-http DELETE :/rest/v2/namespaces/library/collections/library
+http DELETE localhost:8180/v2/namespaces/library/collections/library
 ```
 
 Fantastic!  We've gone over all three of the API types.  Feel free to visit the developer site at https://datastax.com/dev to learn more about Cassandra, Astra and Stargate.

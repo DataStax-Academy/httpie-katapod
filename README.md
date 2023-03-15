@@ -6,7 +6,7 @@
 
 ## Start the hands-on lab:
 
-[![Open in KataPod](https://github.com/DataStax-Academy/katapod-shared-assets/blob/main/images/open-in-katapod.png)](https://gitpod.io/#https://github.com/synedra/httpie-katapod)
+[![Open in KataPod](https://github.com/DataStax-Academy/katapod-shared-assets/blob/main/images/open-in-katapod.png)](https://gitpod.io/#https://github.com/datastax-academy/httpie-katapod)
 
 ----
 # Want to use this on your local system?

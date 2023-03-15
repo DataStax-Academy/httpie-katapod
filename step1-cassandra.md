@@ -1,7 +1,7 @@
 
 <!-- TOP -->
 <div class="top">
-  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-logo.svg" />
+  <img src="https://datastax-academy.github.io/katapod-shared-assets/images/ds-academy-2023.svg" />
   <div class="scenario-title-section">
     <span class="scenario-title">Exploring Stargate with HTTPie</span>
     <span class="scenario-subtitle">ℹ️ For technical support, please contact us via <a href="mailto:kirsten.hunter@datastax.com">email</a> or <a href="https://linkedin.com/in/synedra">LinkedIn</a>.</span>
@@ -41,21 +41,17 @@ cp /workspace/httpie-katapod/assets/config-cassandra.json ~/.config/httpie/confi
 Again, please be patient.
 
 ## ✅ Create/Refresh your Token
-Create a token to use for commands. This token will expire if you don't use it for 30 minutes, so you can return to this step to refresh the token.  Sometimes the servers can take a moment to fully come online, if you get an error when creating the token just click again to get a new one.
+Create a token to use for commands. This token will expire if you don't use it for 30 minutes.  Sometimes the servers can take a moment to fully come online, if you get an error when creating the token just click again to get a new one.
+
+The future steps will refer back to this command, which you can use any time your token expires.
 
 ```
-export AUTH_TOKEN=`curl -L -X POST 'http://localhost:8081/v1/auth' \
-  -H 'Content-Type: application/json' \
-  --data-raw '{
-    "username": "cassandra",
-    "password": "cassandra"
-}'| cut -f4 -d'"'`
-http --session=stargate http://localhost:8082/v2/schemas/keyspaces  X-Cassandra-Token:$AUTH_TOKEN
-ln -s ~/.config/httpie/sessions/localhost_8082 ~/.config/httpie/sessions/localhost_8080
-ln -s ~/.config/httpie/sessions/localhost_8082 ~/.config/httpie/sessions/localhost_8180
+./token.sh
 ```
 
-✅ Create database keyspace `library`:
+This sets a session in your httpie configuration which will be used whenever you make an HTTPie call.  
+
+✅ Create database keyspace `library` using the /schemas/keyspaces endpoint:
 ```
 http POST http://localhost:8082/v2/schemas/keyspaces name=library
 ```
