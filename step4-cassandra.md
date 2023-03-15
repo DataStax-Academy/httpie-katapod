@@ -31,6 +31,12 @@ In this section you will use our httpie configuration to take a look at the Star
 * Document - Update documents
 * Document - Delete document
 
+*Did your token expire?  Reset it with this command.*
+
+```
+/workspace/httpie-katapod/token.sh
+```
+
 ## 1. Create a collection
 
 You'll need a collection to hold your documents.  This is separate from the database name (we're using workshops) or namespace (in this case, library) that contains it.  If you don't create the collection, it will automatically be created for you when you insert your first document.

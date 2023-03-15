@@ -46,7 +46,7 @@ Create a token to use for commands. This token will expire if you don't use it f
 The future steps will refer back to this command, which you can use any time your token expires.
 
 ```
-./token.sh
+/workspace/httpie-katapod/token.sh
 ```
 
 This sets a session in your httpie configuration which will be used whenever you make an HTTPie call.  
