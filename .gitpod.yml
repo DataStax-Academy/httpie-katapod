@@ -15,7 +15,7 @@ github:
     main: true
 vscode:
    extensions:
-    - https://github.com/hemidactylus/katapod/releases/download/1.1.0-beta2/katapod-1.1.0-beta2.vsix
+    - https://github.com/DataStax-Academy/katapod/releases/download/stable/katapod-stable.vsix
 ports:
   - name: stargate
     port: 8000-10000
