@@ -18,7 +18,7 @@
   </a>
 </div>
 
-<div class="step-title">Exploring Stargate APIs from the command line - REST</div>
+<div class="step-title">Exploring Stargate APIs from the command line - REST Tables</div>
 
 In this section you will use our httpie configuration to take a look at the Stargate REST API. We will focus on creating and retrieving a table.
 
@@ -122,6 +122,6 @@ astra db cqlsh workshops -k library -e "desc users;"
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Create Astra DB
  </a>
  <a href='command:katapod.loadPage?[{"step":"step3-astra"}]'
-    class="btn btn-dark navigation-bottom-right">Next ➡️ REST API
+    class="btn btn-dark navigation-bottom-right">Next ➡️ REST Rows
   </a>
 </div>
