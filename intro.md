@@ -7,7 +7,6 @@
   </div>
 </div>
 
-
 <!-- CONTENT -->
 <main>
     <br/>
@@ -22,7 +21,7 @@
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
               <li><span class="scenario-objective">Use a hosted Astra database or run one in gitpod</li>
-              <li><span class="scenario-objective">Learn how to interact with each of the Stargate APIs (REST, GraphQL, and Document)</li>
+              <li><span class="scenario-objective">Learn how to interact with the Stargate REST API</li>
             </ul>
       </div>
      </div>
