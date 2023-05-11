@@ -7,7 +7,6 @@
   </div>
 </div>
 
-
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
  <a href='command:katapod.loadPage?[{"step":"step1-astra"}]' 
@@ -19,44 +18,27 @@
   </a>
 </div>
 
-<div class="step-title">HTTPie and Credentials</div>
+<div class="step-title">Exploring Stargate APIs from the command line - REST</div>
 
-**Objectives**
-In this step, we will:
-1. Create Credentials
-2. Verify Credentials
+In this section you will use our httpie configuration to take a look at the Stargate REST API. We will focus on creating and retrieving a table.
 
----
+- REST - List Keyspaces
+- REST - Create a Table
+- REST - Retrieve Tables
 
-# 1. Create the credentials file
+# 1. Create a table
 
-```
-astra db create-dotenv -k library workshops
-```
+The first thing that needs to happen is to create a table. HTTPie will handle the authentication and create the right server based on your .astrarc file, but you'll need to make sure and use that "library" keyspace.
 
-Now let's copy those credentials to our environment
+Here are the steps:
 
-```
-echo "[workshops]" >> ~/.astrarc
-cat .env | tr -d \" >> ~/.astrarc
-cp /workspace/httpie-katapod/assets/config-astra.json ~/.config/httpie/config.json
-```
-
-## 2. Verify Credentials
-
-Make a call to the API using httpie to make sure your credentials are working:
+## A. Check for your keyspace
 
 ```
-http --auth-type astra -a workshops: :/rest/v1/keyspaces
+http :/rest/v2/schemas/keyspaces
 ```
 
-We've actually got an httpie config file so we can skip the auth-type stuff.
-
-Try the simpler call to make sure it works:
-
-```
-http :/rest/v1/keyspaces
-```
+Do you see 'library' in there? Great, we're ready to move on.
 
 <details><summary>Show me the CQL</summary>
   
@@ -66,7 +48,73 @@ astra db cqlsh workshops -k library -e "desc keyspaces;"
   
 </details>
 
-Great, it's time to dive deeper into the Stargate APIs to see what they can do for you.
+You could also check for a specific keyspace:
+
+```
+http :/rest/v2/schemas/keyspaces/library
+```
+
+## B. Create the table
+
+```
+http POST :/rest/v2/schemas/keyspaces/library/tables json:='{
+	"name": "users",
+	"columnDefinitions":
+	  [
+        {
+	      "name": "firstname",
+	      "typeDefinition": "text"
+	    },
+        {
+	      "name": "lastname",
+	      "typeDefinition": "text"
+	    },
+        {
+	      "name": "favorite color",
+	      "typeDefinition": "text"
+	    }
+	  ],
+	"primaryKey":
+	  {
+	    "partitionKey": ["firstname"],
+	    "clusteringKey": ["lastname"]
+	  },
+	"tableOptions":
+	  {
+	    "defaultTimeToLive": 0,
+	    "clusteringExpression":
+	      [{ "column": "lastname", "order": "ASC" }]
+	  }
+}'
+```
+
+Just to be sure, go ahead and ask for a listing of the tables in the library keyspace:
+
+```
+http :/rest/v2/schemas/keyspaces/library/tables
+```
+
+<details><summary>Show me the CQL for this command</summary>
+	
+```
+astra db cqlsh workshops -k library -e "desc tables;"
+```
+
+</details>
+
+or specify the table you want:
+
+```
+http :/rest/v2/schemas/keyspaces/library/tables/users
+```
+
+<details><summary>Show me the CQL for this command</summary>
+	
+```
+astra db cqlsh workshops -k library -e "desc users;"
+```
+
+</details>
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

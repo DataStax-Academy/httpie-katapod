@@ -7,7 +7,6 @@
   </div>
 </div>
 
-
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
  <a href='command:katapod.loadPage?[{"step":"step1-cassandra"}]' 
@@ -23,15 +22,13 @@
 
 <div class="step-title">Exploring Stargate APIs from the command line - REST</div>
 
-In this section you will use our httpie configuration to take a look at the Stargate REST API. 
+In this section you will use our httpie configuration to take a look at the Stargate REST API.
 
+- REST - List Keyspaces
 - REST - Create a Table
-- REST - Add some rows
-- REST - Update the rows
-- REST - Delete the rows
-- REST - Delete the table
+- REST - Retrieve Tables
 
-*Did your token expire?  Reset it with this command.*
+_Did your token expire? Reset it with this command._
 
 ```
 /workspace/httpie-katapod/token.sh
@@ -43,25 +40,21 @@ The first thing that needs to happen is to create a table. HTTPie will handle th
 
 Here are the steps:
 
-#### A. Check for your keyspace
-
+### A. Check for your keyspace
 
 ```
 http http://localhost:8082/v2/schemas/keyspaces
 ```
 
-Do you see 'library' in there? Great, we're ready to move on. 
-
+Do you see 'library' in there? Great, we're ready to move on.
 
 You could also check for a specific keyspace:
-
 
 ```
 http http://localhost:8082/v2/schemas/keyspaces/library
 ```
 
-#### B. Create the tables
-
+### B. Create the tables
 
 ```
 echo -n '{
@@ -102,6 +95,7 @@ http localhost:8082/v2/schemas/keyspaces/library/tables
 ```
 
 or specify the table you want:
+
 ```
 http localhost:8082/v2/schemas/keyspaces/library/tables/users
 ```
@@ -148,7 +142,7 @@ http localhost:8082/v2/keyspaces/library/users where=='{"firstname":{"$in":["Moo
 
 ## 4. Delete the rows
 
-Janesha has moved away.  Let's remove them from the database.
+Janesha has moved away. Let's remove them from the database.
 
 ```
 http DELETE localhost:8082/v2/keyspaces/library/users/Janesha/Doesha
@@ -181,6 +175,6 @@ Now you can move on and check out the GraphQL API.
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Credentials
  </a>
  <a href='command:katapod.loadPage?[{"step":"step3-cassandra"}]'
-    class="btn btn-dark navigation-bottom-right">Next ➡️ GraphQL API
+    class="btn btn-dark navigation-bottom-right">Next ➡️ REST Rows
   </a>
 </div>
