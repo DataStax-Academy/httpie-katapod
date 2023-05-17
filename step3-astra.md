@@ -12,9 +12,9 @@
  <a href='command:katapod.loadPage?[{"step":"step2-astra"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 3 of 5</span>
+<span class="step-count"> Step 3 of 3</span>
  <a href='command:katapod.loadPage?[{"step":"finish-astra"}]' 
-    class="btn btn-dark navigation-top-right">Next ➡️
+    class="btn btn-dark navigation-top-right">Next
   </a>
 </div>
 
@@ -114,7 +114,7 @@ http :/rest/v2/schemas/keyspaces/library/tables
 
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"step2-astra"}]'
-   class="btn btn-dark navigation-bottom-left">⬅️ Back - Credentials
+   class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
  <a href='command:katapod.loadPage?[{"step":"finish-astra"}]'
     class="btn btn-dark navigation-bottom-right">Finish

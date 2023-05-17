@@ -12,7 +12,7 @@
  <a href='command:katapod.loadPage?[{"step":"intro"}]' 
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 1 of 5</span>
+<span class="step-count"> Step 1 of 3</span>
  <a href='command:katapod.loadPage?[{"step":"step2-astra"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
@@ -110,9 +110,9 @@ Great, it's time to dive deeper into the Stargate APIs to see what they can do f
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"intro"}]'
-   class="btn btn-dark navigation-bottom-left">⬅️ Back - Astra Overview
+   class="btn btn-dark navigation-bottom-left">⬅️ Back - Overview
  </a>
  <a href='command:katapod.loadPage?[{"step":"step2-astra"}]'
-    class="btn btn-dark navigation-bottom-right">Next ➡️ Set up workspace credentials
+    class="btn btn-dark navigation-bottom-right">Next ➡️ Tables in the REST API
   </a>
 </div>
