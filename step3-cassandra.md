@@ -108,6 +108,6 @@ http localhost:8082/v2/schemas/keyspaces/library/tables
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Credentials
  </a>
  <a href='command:katapod.loadPage?[{"step":"finish-cassandra"}]'
-    class="btn btn-dark navigation-bottom-right">Finish
+    class="btn btn-dark navigation-bottom-right" onClick="alert('Hello, world!')">Finish
   </a>
 </div>
