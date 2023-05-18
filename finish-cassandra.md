@@ -32,7 +32,7 @@
     </div>
 </main>
 
-<img src="https://datastax-academy.github.io/httpie-katapod/assets/CloudNativeData.png" />
+[https://datastax-academy.github.io/httpie-katapod/assets/CloudNativeData.png](https://github.com/DataStax-Academy/httpie-katapod/blob/main/assets/CloudNativeData.png)
 We'd love to hear your thoughts about this demo and answer any questions you might have.  We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes.  If you're interested, please click this link to send feedback or just to get your name in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.
 
 <!-- NAVIGATION -->
