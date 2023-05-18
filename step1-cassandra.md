@@ -14,7 +14,7 @@
  </a>
 <span class="step-count"> Step 1 of 3</span>
  <a href='command:katapod.loadPage?[{"step":"step2-cassandra"}]' 
-    class="btn btn-dark navigation-top-right">Next ➡️
+    class="btn btn-dark navigation-top-right">Next ➡️ Tables in the REST API
   </a>
 </div>
 
@@ -63,6 +63,6 @@ http POST http://localhost:8082/v2/schemas/keyspaces name=library
    class="btn btn-dark navigation-bottom-left">⬅️ Back - Intro
  </a>
  <a href='command:katapod.loadPage?[{"step":"step2-cassandra"}]'
-    class="btn btn-dark navigation-bottom-right">Next ➡️ REST API
+    class="btn btn-dark navigation-bottom-right">Next - Tables in the REST API
   </a>
 </div>
