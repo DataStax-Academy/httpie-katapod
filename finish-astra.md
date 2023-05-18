@@ -32,6 +32,9 @@
     </div>
 </main>
 
+<img src="assets/CloudNativeData.png" height="200">
+We'd love to hear your thoughts about this demo and answer any questions you might have.  We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes.  If you're interested, please <a href="mailto:kirsten.hunter@datastax.com?subject=Astra&body=Please enter your feedback here">click this link</a> to send feedback or just to get your name in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"step3-astra"}]'
