@@ -33,7 +33,11 @@
 </main>
 
 <img src="https://datastax-academy.github.io/katapod-shared-assets/images/CloudNativeData.png" height="200">
-We'd love to hear your thoughts about this demo and answer any questions you might have.  We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes.  If you're interested, please <a href="mailto:kirsten.hunter+cassandra@datastax.com">email us</a> to send feedback or just to get your name in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.
+We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes, or a t-shirt if you prefer.  If you're interested, please push the swag button to put your email in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.
+
+<a href='command:katapod.loadPage?[{"step":"thanks-cassandra"}]' class="btn btn-primary btn-astra">
+              Win some swag!
+            </a>
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
