@@ -5,7 +5,7 @@ import sys
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.optionxform = lambda option: option
-    config.read("/Users/kirstenhunter/.astrarc")
+    config.read("/home/gitpod/.astrarc")
 
     print(config.sections())
 
