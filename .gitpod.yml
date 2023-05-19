@@ -10,6 +10,8 @@ tasks:
       mkdir -p $HOME/.config/httpie
       cp assets/config.json $HOME/.config/httpie
       pip3 install httpie-astra==0.1.3
+      /home/gitpod/.astra/cli/astra setup -t $ASTRA_METRICS_TOKEN
+      /home/gitpod/.astra/cli/astra db create-dotenv stargate -k swag -d $HOME/.config
 github:
   prebuilds:
     main: true
