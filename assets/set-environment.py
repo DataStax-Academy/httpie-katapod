@@ -5,7 +5,7 @@ import sys
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.optionxform = lambda option: option
-    config.read("/Users/kirstenhunter/.astrarc")
+    config.read("/home/gitpod/.astrarc")
 
     print(config.sections())
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     config[section] = configenv[section]
 
-    with open("/Users/kirstenhunter/.astrarc", "w") as configfile:
+    with open("/home/gitpod/.astrarc", "w") as configfile:
         config.write(configfile)
 
     print(sys.argv[1])
