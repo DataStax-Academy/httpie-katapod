@@ -38,6 +38,7 @@ We're running a drawing for a signed copy of Managing Cloud Native Data on Kuber
 <a href='command:katapod.loadPage?[{"step":"thanks-astra"}]' class="btn btn-primary btn-astra">
               Win some swag!
             </a>
+<hr>
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
