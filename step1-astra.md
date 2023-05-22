@@ -14,7 +14,7 @@
  </a>
 <span class="step-count"> Step 1 of 3</span>
  <a href='command:katapod.loadPage?[{"step":"step2-astra"}]' 
-    class="btn btn-dark navigation-top-right">Next ➡️
+    class="btn btn-dark navigation-top-right">Next ➡️ Tables in the REST API
   </a>
 </div>
 
@@ -77,7 +77,6 @@ Now let's copy those credentials to our environment
 
 ```
 echo "[workshops]" >> ~/.astrarc
-cat .env | tr -d \" >> ~/.astrarc
 cp /workspace/httpie-katapod/assets/config-astra.json ~/.config/httpie/config.json
 ```
 

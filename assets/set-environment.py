@@ -5,7 +5,7 @@ import sys
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.optionxform = lambda option: option
-    config.read("/home/gitpod/.astrarc")
+    config.read("/workspace/assets/.astrarc")
 
     configenv = configparser.ConfigParser()
     configenv.optionxform = lambda option: option
@@ -14,7 +14,8 @@ if __name__ == "__main__":
         with open(sys.argv[1]) as infile:
             outfile.write("[" + sys.argv[2] + "]\n")
             for line in infile:
-                outfile.write(line)
+                new_line = line.replace('"', "")
+                outfile.write(new_line)
 
     configenv.read(".newenv")
     section = sys.argv[2]
