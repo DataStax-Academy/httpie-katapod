@@ -76,8 +76,7 @@ astra db create-dotenv -k library workshops
 Now let's copy those credentials to our environment
 
 ```
-echo "[workshops]" >> ~/.astrarc
-cp /workspace/httpie-katapod/assets/config-astra.json ~/.config/httpie/config.json
+python assets/set-environment.py .env workshops
 ```
 
 ## 4. Verify Credentials
