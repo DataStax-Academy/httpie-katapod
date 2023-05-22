@@ -7,8 +7,6 @@ if __name__ == "__main__":
     config.optionxform = lambda option: option
     config.read("/home/gitpod/.astrarc")
 
-    print(config.sections())
-
     configenv = configparser.ConfigParser()
     configenv.optionxform = lambda option: option
 
