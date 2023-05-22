@@ -1,0 +1,35 @@
+{
+    "layout": {
+        "terminals": [
+          {
+            "id": "main",
+            "name": "main"
+          },
+          {
+            "id": "admin",
+            "name": "admin"
+          }
+        ]
+      },
+    "navigation": {
+      "onLoadCommands": {
+        "step1-astra": {
+          "main": [
+            {
+            "command": "cp /workspace/httpie-katapod/assets/config-astra.json /home/gitpod/.config/httpie/config.json",
+                "maxInvocations": "unlimited"
+            }
+          ]
+        },
+        "step1-cassandra": {
+          "main": [
+            {
+                "command": "cp /workspace/httpie-katapod/assets/config-cassandra.json /home/gitpod/.config/httpie/config.json",
+                 "maxInvocations": "unlimited"
+            }
+          ]
+        }
+      }
+    }
+  }
+  
