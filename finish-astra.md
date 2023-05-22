@@ -30,7 +30,8 @@
       </div>
      </div>
      <div class="feature col">
-            <img src="https://datastax-academy.github.io/katapod-shared-assets/images/CloudNativeData.png" height="200">
+        <div class="row g-4 py-2 row-cols-1 row-cols-lg-1">
+            <div><img src="https://datastax-academy.github.io/katapod-shared-assets/images/CloudNativeData.png" height="200"></div>
 We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes, or a t-shirt if you prefer.  If you're interested, please push the swag button to put your email in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.
 
 <a href='command:katapod.loadPage?[{"step":"thanks-astra"}]' class="btn btn-primary btn-astra">
@@ -38,8 +39,7 @@ We're running a drawing for a signed copy of Managing Cloud Native Data on Kuber
             </a>
      <div>
 </div>
-
-    </div>
+</div>
 
 </main>
 
