@@ -13,15 +13,7 @@
       },
     "navigation": {
       "onLoadCommands": {
-        "step1-astra": {
-          "install-dependencies": [
-            {
-            "command": "echo \"Setting up config for astra...\"; cp /workspace/httpie-katapod/assets/config-astra.json /home/gitpod/.config/httpie/config.json",
-                "maxInvocations": "unlimited"
-            }
-          ]
-        },
-        "step1-cassandra": {
+       "step1-cassandra": {
           "install-dependencies": [
             {
                 "command": "echo \"Setting up config for local Cassandra...\";cp /workspace/httpie-katapod/assets/config-cassandra.json /home/gitpod/.config/httpie/config.json",
