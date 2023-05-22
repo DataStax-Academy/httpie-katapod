@@ -20,14 +20,14 @@
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Use a hosted Astra database or run one in gitpod</li>
+              <li><span class="scenario-objective">Use a hosted Astra database</li>
               <li><span class="scenario-objective">Learn how to interact with the Stargate REST API</li>
             </ul>
       </div>
      </div>
     </div>
     <div class="container px-4 py-2">
-        <div class="scenario-choices">Run this hands-on lab using Astra DB or Apache Cassandra®:</div><br/>
+        <div class="scenario-choices">Run this hands-on lab using Astra DB:</div><br/>
         <div class="row g-4 py-2 row-cols-1 row-cols-lg-1">
           <div class="feature col div-choice">
             <div class="logo-astradb">
@@ -40,6 +40,7 @@
               Start with Astra DB
             </a>
           </div>
+          <!--
           <div class="feature col div-choice">
             <div class="logo-cassandra">
                 <img src="https://datastax-academy.github.io/katapod-shared-assets/images/logo-cassandra.png" height="40px" />
@@ -51,6 +52,7 @@
               Start with Cassandra
             </a>   
           </div>
+          -->
         </div>
     </div>
 </main>
