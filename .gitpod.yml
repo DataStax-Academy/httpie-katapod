@@ -14,7 +14,7 @@ tasks:
       sudo /home/gitpod/.pyenv/shims/python assets/set-environment.py $HOME/.config/.env swag
       sudo rm -rf /workspace/httpie-katapod/.newenv
       sudo mv /home/gitpod/.astrarc /root
-      cp /workspace/httpie-katapod/config-astra.json $HOME/.config/httpie/config.json
+      cp /workspace/httpie-katapod/assets/config-astra.json $HOME/.config/httpie/config.json
 github:
   prebuilds:
     main: true
