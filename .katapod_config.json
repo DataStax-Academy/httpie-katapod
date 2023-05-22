@@ -4,6 +4,10 @@
           {
             "id": "admin",
             "name": "admin"
+          },
+          {
+            "id": "cqlsh",
+            "name": "main"
           }
         ]
       },
@@ -12,7 +16,7 @@
         "step1-astra": {
           "admin": [
             {
-            "command": "echo "Setting up config for astra..."; cp /workspace/httpie-katapod/assets/config-astra.json /home/gitpod/.config/httpie/config.json",
+            "command": "echo \"Setting up config for astra...\"; cp /workspace/httpie-katapod/assets/config-astra.json /home/gitpod/.config/httpie/config.json",
                 "maxInvocations": "unlimited"
             }
           ]
@@ -20,7 +24,7 @@
         "step1-cassandra": {
           "admin": [
             {
-                "command": "echo "Setting up config for local Cassandra...";cp /workspace/httpie-katapod/assets/config-cassandra.json /home/gitpod/.config/httpie/config.json",
+                "command": "echo \"Setting up config for local Cassandra...\";cp /workspace/httpie-katapod/assets/config-cassandra.json /home/gitpod/.config/httpie/config.json",
                  "maxInvocations": "unlimited"
             }
           ]
