@@ -13,6 +13,7 @@ tasks:
       sudo /home/gitpod/.astra/cli/astra setup -t $ASTRA_METRICS_TOKEN
       sudo /home/gitpod/.astra/cli/astra db create-dotenv stargate -k swag -d $HOME/.config
       sudo /home/gitpod/.pyenv/shims/python assets/set-environment.py $HOME/.config/.env swag
+      sudo rm -rf /workspace/httpie-katapod/.newenv
       sudo mv /home/gitpod/.astrarc /root
 github:
   prebuilds:
