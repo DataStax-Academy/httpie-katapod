@@ -33,7 +33,7 @@
             <div class="logo-astradb">
               <img src="https://datastax-academy.github.io/katapod-shared-assets/images/CloudNativeData.png" height="200"></div>
 <br />
-<p>We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes, or a t-shirt if you prefer.  If you're interested, please push the swag button to put your email in the drawing.  The drawing will be held on Friday, May 26 and the winner will be contacted for shipping information.</p>
+<p>We're running a drawing for a signed copy of Managing Cloud Native Data on Kubernetes, or a t-shirt if you prefer.  If you're interested, please push the swag button to put your email in the drawing.  The drawing will be held on Friday, July 7 and the winner will be contacted for shipping information.</p>
 
 <a href='command:katapod.loadPage?[{"step":"thanks-astra"}]' class="btn btn-primary btn-astra">
               Win some swag!
