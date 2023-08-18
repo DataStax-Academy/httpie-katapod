@@ -4,7 +4,7 @@
 
 **In this hands-on lab, you will:** Explore CRUD functions using the HTTPie command line tool
 
-## Start the hands-on lab:
+## Start the hands-on lab (Chrome, Firefox and possibly Edge will work.  Safari is right out.)
 
 [![Open in KataPod](https://github.com/DataStax-Academy/katapod-shared-assets/blob/main/images/open-in-katapod.png)](https://gitpod.io/#https://github.com/datastax-academy/httpie-katapod)
 

@@ -2,10 +2,6 @@
     "layout": {
         "terminals": [
           {
-            "id": "admin",
-            "name": "admin"
-          },
-          {
             "id": "cqlsh",
             "name": "main"
           }
@@ -22,7 +18,7 @@
           ]
         },
         "finish-astra": {
-            "admin": [
+            "cqlsh": [
               {
               "command": "HOME=/root sudo /home/gitpod/.pyenv/shims/http --auth-type astra  -a swag: POST :/rest/v2/keyspaces/swag/metrics key=$GITPOD_INSTANCE_ID path=astra date=`date +%s`",
               "maxInvocations": "1"
@@ -30,7 +26,7 @@
             ]
           },
         "finish-cassandra": {
-            "admin": [
+            "sqlsh": [
               {
                   "command": "HOME=/root sudo /home/gitpod/.pyenv/shims/http --auth-type astra  -a swag: POST :/rest/v2/keyspaces/swag/metrics key=$GITPOD_INSTANCE_ID path=cassandra date=`date +%s`",
                    "maxInvocations": "1"
@@ -38,7 +34,7 @@
             ]
           },
           "thanks-astra": {
-            "admin": [
+            "sqlsh": [
               {
               "command": "HOME=/root sudo /home/gitpod/.pyenv/shims/http --auth-type astra  -a swag: POST :/rest/v2/keyspaces/swag/emails email=$GITPOD_GIT_USER_EMAIL path=astra date=`date +%s`",
               "maxInvocations": "1"
@@ -46,7 +42,7 @@
             ]
           },
         "thanks-cassandra": {
-            "admin": [
+            "sqlsh": [
               {
                   "command": "HOME=/root sudo /home/gitpod/.pyenv/shims/http --auth-type astra  -a swag: POST :/rest/v2/keyspaces/swag/metrics email=$GITPOD_GIT_USER_EMAIL path=cassandra date=`date +%s`",
                    "maxInvocations": "1"
